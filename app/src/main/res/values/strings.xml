@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">saddam store</string>
+
+    <string name="ok">OK</string>
+    <string name="helpline">Helpline</string>
+    <string name="cancel">Cancel</string>
+    <string name="go_back">Go Back</string>
+    <string name="cancel_text">Cancel</string>
+    <string name="coins_help">Tajir Coins aapki har khareedari par milne wala inaam hain. Aap in coins ko apni agli khareedari par discount ke liye istemal kar sakte hain.</string>
+    <string name="cannot_place_order_right_now">Is waqt order place nahi ho sakta. Baraye meharbani kuch der baad koshish karein.</string>
+    <string name="confirm_delivery_cancel_message">Kya aap waqai is delivery ko cancel karna chahte hain?</string>
+    <string name="delivery_man_label">Delivery Man</string>
+    <string name="acknowledge_text">Acknowledge</string>
+
+    <string name="browse">Browse</string>
+    <string name="enter_your_phone_number">Apna phone number darj karein</string>
+    <string name="cart">Cart</string>
+    <string name="account">Account</string>
+    <string name="your_cart_is_empty">Aapki cart khali hai</string>
+    <string name="place_order">Order Place Karein</string>
+    <string name="your_account">Aapka Account</string>
+    <string name="log_out">Log Out</string>
+    <string name="my_orders">Mere Orders</string>
+    <string name="mera_naam">Aapka Naam Kya Hai?</string>
+    <string name="mera_apna_naam">Apna poora naam likhein</string>
+    <string name="dukan_ka_naam">Aapki Dukaan Ka Naam Kya Hai?</string>
+    <string name="existing_location_required">Apni dukaan ki location register karein</string>
+    <string name="register_location">Location Register Karein</string>
+    <string name="outlet_has_been_registered">Aapki dukaan register ho chuki hai!</string>
+</resources>

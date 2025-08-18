@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/statusColorBand"
+            android:orientation="vertical"
+            android:paddingTop="6dp"
+            android:paddingBottom="1dp"
+            android:paddingStart="14dp"
+            android:paddingEnd="4dp">
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/statusColorBand"
+            android:layout_width="8dp"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@+id/cardContent"
+            android:layout_alignBottom="@+id/cardContent"
+            android:layout_alignParentEnd="true"
+            android:background="@color/red4"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/skusSeparator"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/catskillWhite" />
+
+</LinearLayout>

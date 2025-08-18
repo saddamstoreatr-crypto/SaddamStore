@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/pageFragment">
+
+    <fragment
+        android:id="@+id/pageFragment"
+        android:name="com.sdstore.main.page.PageFragment"
+        android:label="PageFragment" />
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.sdstore.main.cart.CartFragment"
+        android:label="CartFragment" />
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.sdstore.main.account.AccountFragment"
+        android:label="AccountFragment" />
+</navigation>

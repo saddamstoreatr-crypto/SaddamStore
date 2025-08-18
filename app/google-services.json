@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "638170800156",
+    "project_id": "saddam-store-atr",
+    "storage_bucket": "saddam-store-atr.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:638170800156:android:d571d1b3839d36b3217fd9",
+        "android_client_info": {
+          "package_name": "com.sdstore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHsrhAgmCLbTcfCNWQ4Pgy_HlJ8xX546g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_register"
+    app:startDestination="@id/userNameFragment">
+
+    <fragment
+        android:id="@+id/userNameFragment"
+        android:name="com.sdstore.register.UserNameFragment"
+        android:label="UserNameFragment" >
+        <action
+            android:id="@+id/action_userNameFragment_to_outletNameFragment"
+            app:destination="@id/outletNameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/outletNameFragment"
+        android:name="com.sdstore.register.OutletNameFragment"
+        android:label="OutletNameFragment" >
+        <action
+            android:id="@+id/action_outletNameFragment_to_outletLocationFragment"
+            app:destination="@id/outletLocationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/outletLocationFragment"
+        android:name="com.sdstore.register.OutletLocationFragment"
+        android:label="OutletLocationFragment" >
+        <action
+            android:id="@+id/action_outletLocationFragment_to_registerSuccessFragment"
+            app:destination="@id/registerSuccessFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerSuccessFragment"
+        android:name="com.sdstore.register.RegisterSuccessFragment"
+        android:label="RegisterSuccessFragment" />
+</navigation>
