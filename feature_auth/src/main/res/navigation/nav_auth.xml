@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_auth"
+    app:startDestination="@id/startFragment">
+
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.sdstore.auth.ui.StartFragment"
+        tools:layout="@layout/fragment_start">
+        <action
+            android:id="@+id/action_startFragment_to_enterPhoneFragment"
+            app:destination="@id/enterPhoneFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/enterPhoneFragment"
+        android:name="com.sdstore.auth.ui.EnterPhoneFragment"
+        tools:layout="@layout/fragment_enter_phone">
+        <action
+            android:id="@+id/action_enterPhoneFragment_to_enterOtpFragment"
+            app:destination="@id/enterOtpFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/enterOtpFragment"
+        android:name="com.sdstore.auth.ui.EnterOtpFragment"
+        tools:layout="@layout/fragment_enter_otp">
+        <argument
+            android:name="phoneNumber"
+            app:argType="string" />
+        <argument
+            android:name="verificationId"
+            app:argType="string" />
+        <argument
+            android:name="resendToken"
+            app:argType="com.google.firebase.auth.PhoneAuthProvider$ForceResendingToken" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.sdstore.auth.ui.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.sdstore.auth.ui.SignUpFragment"
+        android:label="SignUpFragment"
+        tools:layout="@layout/fragment_signup">
+        <action
+            android:id="@+id/action_signUpFragment_to_verifyEmailFragment"
+            app:destination="@id/verifyEmailFragment"
+            app:popUpTo="@id/nav_auth"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/verifyEmailFragment"
+        android:name="com.sdstore.auth.ui.VerifyEmailFragment"
+        android:label="VerifyEmailFragment"
+        tools:layout="@layout/fragment_verify_email">
+        <action
+            android:id="@+id/action_verifyEmailFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/nav_auth"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+</navigation>

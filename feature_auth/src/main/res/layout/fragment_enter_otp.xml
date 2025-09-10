@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ui.EnterOtpFragment">
+
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="12dp"
+        android:src="@drawable/ic_arrow_back"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/cd_back_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/instructionTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="@string/enter_otp_title"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backButton" />
+
+    <TextView
+        android:id="@+id/instructionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/instructionTitleTextView"
+        tools:text="Enter the 6-digit code sent to +923001234567" />
+
+    <LinearLayout
+        android:id="@+id/codeEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/instructionTextView">
+
+        <EditText
+            android:id="@+id/otp1"
+            style="@style/OtpEditText"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/otp2"
+            style="@style/OtpEditText"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/otp3"
+            style="@style/OtpEditText"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/otp4"
+            style="@style/OtpEditText"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/otp5"
+            style="@style/OtpEditText"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/otp6"
+            style="@style/OtpEditText"
+            android:importantForAutofill="no" />
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_verify_otp"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
+        android:enabled="false"
+        android:text="تصدیق کریں"
+        app:layout_constraintEnd_toEndOf="@id/codeEditText"
+        app:layout_constraintStart_toStartOf="@id/codeEditText"
+        app:layout_constraintTop_toBottomOf="@id/codeEditText" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/btn_verify_otp"
+        app:layout_constraintEnd_toEndOf="@id/btn_verify_otp"
+        app:layout_constraintStart_toStartOf="@id/btn_verify_otp"
+        app:layout_constraintTop_toTopOf="@id/btn_verify_otp" />
+
+    <TextView
+        android:id="@+id/countdownTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_verify_otp"
+        tools:text="Resend code in 60s" />
+
+    <Button
+        android:id="@+id/resendCodeButton"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/resend_code"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/countdownTextView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

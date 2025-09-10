@@ -1,30 +1,190 @@
 <resources>
-    <string name="app_name">saddam store</string>
+    <string name="app_name">صدام اسٹور</string>
 
-    <string name="ok">OK</string>
-    <string name="helpline">Helpline</string>
-    <string name="cancel">Cancel</string>
-    <string name="go_back">Go Back</string>
-    <string name="cancel_text">Cancel</string>
-    <string name="coins_help">Tajir Coins aapki har khareedari par milne wala inaam hain. Aap in coins ko apni agli khareedari par discount ke liye istemal kar sakte hain.</string>
-    <string name="cannot_place_order_right_now">Is waqt order place nahi ho sakta. Baraye meharbani kuch der baad koshish karein.</string>
-    <string name="confirm_delivery_cancel_message">Kya aap waqai is delivery ko cancel karna chahte hain?</string>
-    <string name="delivery_man_label">Delivery Man</string>
-    <string name="acknowledge_text">Acknowledge</string>
+    <string name="ok">ٹھیک ہے</string>
+    <string name="helpline">ہیلپ لائن</string>
+    <string name="cancel">منسوخ کیجیے</string>
+    <string name="go_back">واپس جائیں</string>
+    <string name="cancel_text">منسوخ کیجیے</string>
+    <string name="acknowledge_text">تسلیم کریں</string>
 
-    <string name="browse">Browse</string>
-    <string name="enter_your_phone_number">Apna phone number darj karein</string>
-    <string name="cart">Cart</string>
-    <string name="account">Account</string>
-    <string name="your_cart_is_empty">Aapki cart khali hai</string>
-    <string name="place_order">Order Place Karein</string>
-    <string name="your_account">Aapka Account</string>
-    <string name="log_out">Log Out</string>
-    <string name="my_orders">Mere Orders</string>
-    <string name="mera_naam">Aapka Naam Kya Hai?</string>
-    <string name="mera_apna_naam">Apna poora naam likhein</string>
-    <string name="dukan_ka_naam">Aapki Dukaan Ka Naam Kya Hai?</string>
-    <string name="existing_location_required">Apni dukaan ki location register karein</string>
-    <string name="register_location">Location Register Karein</string>
-    <string name="outlet_has_been_registered">Aapki dukaan register ho chuki hai!</string>
+    <string name="browse">براؤز</string>
+    <string name="cart">ٹوکری</string>
+    <string name="account">اکاؤنٹ</string>
+    <string name="my_orders">میرے آرڈرز</string>
+
+    <string name="your_cart_is_empty">آپ کی ٹوکری خالی ہے</string>
+    <string name="place_order">آرڈر پلیس کیجیے</string>
+    <string name="order_placed_successfully">آپ کا آرڈر کامیابی سے پلیس ہو گیا ہے۔</string>
+    <string name="order_placed_failed">آرڈر پلیس کرنے میں مسئلہ ہوا۔</string>
+
+    <string name="your_account">آپ کا اکاؤنٹ</string>
+    <string name="log_out">لاگ آؤٹ</string>
+
+    <string name="enter_your_phone_number">اپنا فون نمبر درج کیجیے</string>
+    <string name="mera_naam">آپ کا نام</string>
+    <string name="mera_apna_naam">اپنا پورا نام لکھیے</string>
+    <string name="dukan_ka_naam">آپ کی دکان کا نام</string>
+    <string name="dukan_ka_naam_hint">دکان کا نام (اختیاری)</string>
+    <string name="skip">چھوڑ دیں</string>
+
+    <string name="existing_location_required">اپنی دکان کی لوکیشن رجسٹر کیجیے</string>
+    <string name="user_location_required">اپنی لوکیشن رجسٹر کیجیے</string>
+    <string name="register_location">لوکیشن رجسٹر کیجیے</string>
+    <string name="get_current_location">موجودہ لوکیشن حاصل کریں</string>
+    <string name="location_fetching">لوکیشن حاصل کی جا رہی ہے...</string>
+    <string name="location_saved">لوکیشن محفوظ ہو گئی!</string>
+    <string name="outlet_has_been_registered">آپ کی دکان رجسٹر ہو چکی ہے!</string>
+    <string name="registration_successful">آپ کی رجسٹریشن مکمل ہو گئی ہے!</string>
+    <string name="user_phone_number_question">آپ کا فون نمبر</string>
+    <string name="user_phone_number_hint">03xxxxxxxxx</string>
+
+    <string name="coins_help">تاجی کوائنز آپ کی ہر خریداری پر ملنے والا انعام ہیں۔ آپ ان کوائنز کو اپنی اگلی خریداری پر ڈسکاؤنٹ کے لیے استعمال کر سکتے ہیں۔</string>
+    <string name="cannot_place_order_title">Cannot Place Order</string>
+    <string name="cannot_place_order_right_now">اس وقت آرڈر پلیس نہیں ہو سکتا۔ براہ مہربانی کچھ دیر بعد کوشش کریں۔</string>
+    <string name="confirm_delivery_cancel_message">کیا آپ واقعی اس ڈیلیوری کو منسوخ کرنا چاہتے ہیں؟</string>
+    <string name="delivery_man_label">ڈیلیوری مین</string>
+
+    <string name="full_name">پورا نام</string>
+    <string name="email">ای میل</string>
+    <string name="password">پاس ورڈ</string>
+    <string name="login">لاگ ان کیجیے</string>
+    <string name="create_account">نیا اکاؤنٹ بنائیے</string>
+    <string name="dont_have_account">اکاؤنٹ نہیں ہے؟ نیا بنائیے</string>
+    <string name="login_help_text">لاگ ان میں مسئلہ؟ ہم سے رابطہ کیجیے</string>
+    <string name="forgot_password">پاس ورڈ بھول گئے؟</string>
+    <string name="reset_password_title">پاس ورڈ ری سیٹ</string>
+    <string name="reset_password_message">اپنا ای میل درج کیجیے، ہم آپ کو پاس ورڈ ری سیٹ کرنے کے لیے ایک لنک بھیجیں گے۔</string>
+    <string name="send_link">لنک بھیجیے</string>
+    <string name="phone_login_help_text">نمبر درج کرنے میں مسئلہ؟ ہم سے رابطہ کیجیے</string>
+    <string name="welcome_back">خوش آمدید!</string>
+    <string name="signup_title">نیا اکاؤنٹ بنائیں</string>
+    <string name="signup_button">سائن اپ کیجیے</string>
+    <string name="verify_email_title">اپنا ای میل Verify کیجیے</string>
+    <string name="verify_email_message">ہم نے آپ کے ای میل ایڈریس پر ایک verification لنک بھیجا ہے۔ براہ کرم اپنا ان باکس چیک کریں۔\n\n(اگر ای میل نہ ملے تو اپنا Spam/Junk فولڈر ضرور چیک کریں)</string>
+    <string name="continue_to_login">میں نے Verify کر لیا، لاگ ان پر جائیں</string>
+    <string name="resend_email">ای میل دوبارہ بھیجیے</string>
+    <string name="enter_otp_title">Enter Code</string>
+    <string name="enter_otp_instruction">Enter the 6-digit code sent to %s</string>
+    <string name="resend_code_in">Resend code in %d s</string>
+    <string name="resend_code">Resend Code</string>
+    <string name="next">آگے</string>
+    <string name="continue_with_phone">فون نمبر کے ساتھ جاری رکھیں</string>
+    <string name="login_with_email">ای میل کے ساتھ لاگ ان کریں</string>
+
+    <string name="edit_profile">پروفائل میں ترمیم کیجیے</string>
+    <string name="save">محفوظ کیجیے</string>
+    <string name="outlet_name_label">دکان کا نام</string>
+    <string name="feedback_suggestion">اپنی رائے یا مشورہ دیجیے</string>
+    <string name="feedback_email">your.email@example.com</string>
+    <string name="feedback_subject">صدام اسٹور ایپ فیڈ بیک</string>
+    <string name="submit_feedback">اپنی رائے بھیجیے</string>
+    <string name="submit">جمع کروائیں</string>
+    <string name="feedback_hint">اپنی رائے یہاں لکھیے...</string>
+    <string name="helpline_support">ہیلپ لائن / سپورٹ</string>
+    <string name="helpline_whatsapp_number">03201415229</string>
+    <string name="helpline_details">مدد کے لیے، آپ نیچے دیے گئے بٹن سے WhatsApp پر رابطہ کر سکتے ہیں، یا اس نمبر پر براہ راست کال کریں:\n\n%s</string>
+    <string name="stock_limit_reached">اسٹاک کی حد تک پہنچ گئے ہیں</string>
+
+    <string name="cancellation_reason_label">منسوخ کرنے کی وجہ:</string>
+    <string name="order_date_label">تاریخ: %s</string>
+    <string name="order_status_label">اسٹیٹس: %s</string>
+    <string name="order_total_label">کل رقم: %s</string>
+    <string name="order_date_unavailable">تاریخ دستیاب نہیں</string>
+    <string name="order_prefix">آرڈر: %s</string>
+    <string name="cancellation_reason_prefix">وجہ: %s</string>
+    <string name="order_id_prefix">آرڈر ID: %s</string>
+    <string name="quantity_prefix">تعداد: %d</string>
+
+
+    <string name="all_products_title">تمام پروڈکٹس</string>
+    <string name="search_results_title">تلاش کے نتائج</string>
+    <string name="no_results_for">\'%s\' کے لیے کوئی نتائج نہیں ملے</string>
+    <string name="search_hint">پروڈکٹ تلاش کریں...</string>
+    <string name="regular_items_title">آپ کی ریگولر اشیاء</string>
+    <string name="all_categories_title">تمام کیٹیگریز</string>
+
+    <string name="order_details_title">آرڈر کی تفصیلات</string>
+    <string name="no_orders_yet">آپ نے ابھی تک کوئی آرڈر نہیں کیا۔</string>
+    <string name="items_in_this_order">اس آرڈر میں شامل آئٹمز</string>
+    <string name="cancel_this_order">یہ آرڈر کینسل کریں</string>
+    <string name="out_of_stock">اسٹاک ختم</string>
+    <string name="add_to_cart">ٹوکری میں</string>
+
+    <string name="order_id_format">آرڈر ID: %1$s</string>
+
+    <string name="profile_update_success">پروفائل کامیابی سے اپ ڈیٹ ہو گئی۔</string>
+    <string name="profile_update_fail">پروفائل اپ ڈیٹ کرنے میں مسئلہ ہوا۔</string>
+    <string name="feedback_submit_success">آپ کی رائے موصول ہو گئی ہے۔ شکریہ!</string>
+    <string name="feedback_submit_fail">فیڈ بیک بھیجنے میں مسئلہ ہوا۔</string>
+    <string name="error_loading_profile">پروفائل لوڈ کرنے میں مسئلہ ہوا۔</string>
+    <string name="error_loading_items">Items load karne mein masla hua.</string>
+    <string name="please_enter_feedback">براہ کرم اپنی رائے درج کریں۔</string>
+    <string name="name_cannot_be_empty">نام خالی نہیں ہو سکتا۔</string>
+    <string name="loading_text">لوڈ ہو رہا ہے...</string>
+    <string name="product_loading_error">پروڈکٹس لوڈ کرنے میں مسئلہ ہوا۔</string>
+    <string name="fill_all_fields">براہ کرم تمام فیلڈز کو پُر کریں۔</string>
+    <string name="account_created_verify_email">اکاؤنٹ بن گیا! براہ کرم اپنا ای میل Verify کریں۔</string>
+    <string name="email_verify_resent">Verification ای میل دوبارہ بھیج دی گئی ہے۔</string>
+    <string name="email_verify_resend_fail">ای میل بھیجنے میں مسئلہ ہوا۔</string>
+    <string name="login_successful">لاگ ان کامیاب!</string>
+    <string name="incorrect_otp">OTP غلط ہے۔ دوبارہ کوشش کریں۔</string>
+    <string name="user_data_check_fail">صارف کا ڈیٹا چیک کرنے میں مسئلہ ہوا۔</string>
+    <string name="new_code_sent">نیا کوڈ بھیج دیا گیا ہے۔</string>
+    <string name="otp_send_fail">OTP بھیجنے میں مسئلہ ہوا: %s</string>
+    <string name="password_reset_link_sent">پاس ورڈ ری سیٹ لنک آپ کے ای میل پر بھیج دیا گیا ہے۔</string>
+    <string name="failed_to_send_reset_link">ری سیٹ لنک بھیجنے میں ناکامی</string>
+    <string name="please_enter_email">براہ کرم اپنا ای میل درج کریں۔</string>
+    <string name="item_added_to_cart">%s ٹوکری میں شامل کر دیا گیا</string>
+    <string name="please_enter_phone_number">براہ کرم درست فون نمبر درج کریں۔</string>
+    <string name="please_enter_name">براہ کرم اپنا نام درج کریں۔</string>
+    <string name="please_enter_outlet_name_or_skip">براہ کرم دکان کا نام درج کریں یا چھوڑ دیں۔</string>
+    <string name="not_provided">فراہم نہیں کیا گیا</string>
+    <string name="profile_updated_successfully">پروفائل کامیابی سے اپ ڈیٹ ہو گئی۔</string>
+    <string name="feedback_submitted_successfully">آپ کی رائے کامیابی سے جمع ہو گئی ہے۔</string>
+    <string name="orders_loading_error">آرڈرز لوڈ کرنے میں مسئلہ ہوا۔</string>
+    <string name="registration_data_missing">رجسٹریشن کا ڈیٹا نامکمل ہے۔</string>
+
+
+    <string name="registration_failed">رجسٹریشن میں مسئلہ ہوا۔</string>
+    <string name="get_location_first">پہلے اپنی لوکیشن حاصل کریں۔</string>
+    <string name="location_permission_needed">لوکیشن کی اجازت ضروری ہے۔</string>
+    <string name="no_products_in_category">اس کیٹیگری میں کوئی پروڈکٹ نہیں ملی۔</string>
+    <string name="order_cancelled_successfully">آرڈر کامیابی سے کینسل ہو گیا۔</string>
+    <string name="order_cancellation_failed">آرڈر کینسل کرنے میں مسئلہ ہوا۔</string>
+    <string name="cart_update_failed">کارٹ اپ ڈیٹ کرنے میں مسئلہ ہوا۔</string>
+    <string name="profile_update_failed">پروفائل اپ ڈیٹ کرنے میں ناکامی ہوئی۔</string>
+    <string name="feedback_submit_failed">فیڈ بیک جمع کروانے میں ناکامی ہوئی۔</string>
+
+    <string name="welcome_to_saddam_store">صدام اسٹور میں خوش آمدید</string>
+    <string name="all_your_needs_at_your_doorstep">آپ کی تمام ضروریات، آپ کی دہلیز پر</string>
+    <string name="recent_orders_title">آپ کے پچھلے آرڈرز</string>
+
+    <string name="buy_again_title">دوبارہ خریدیں</string>
+    <string name="close_button">Close</string>
+    <string name="download_invoice">انوائس ڈاؤن لوڈ کریں</string>
+    <string name="invoice_download_success">انوائس کامیابی سے Downloads فولڈر میں محفوظ ہو گئی۔</string>
+    <string name="invoice_download_failed">انوائس ڈاؤن لوڈ کرنے میں مسئلہ ہوا۔</string>
+    <string name="storage_permission_needed">انوائس محفوظ کرنے کے لیے سٹوریج کی اجازت درکار ہے۔</string>
+
+    <string name="all_purchased_items">Tamam Kharidi Hui Ashya</string>
+    <string name="no_purchased_items_found">Aap ne abhi tak kuch nahi khareeda.</string>
+    <string name="no_search_results">Koi nataij nahi milay.</string>
+    <string name="notification_permission_rationale">Order updates ke liye notifications zaroori hain.</string>
+    <string name="notification_permission_denied">Notifications ki ijazat zaroori hai. Aap isay app settings se on kar sakte hain.</string>
+    <string name="notification_permission_warning">Notifications ke baghair aapko order updates nahi milengi.</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_allow">Ijazat Dein</string>
+
+    <string name="cd_back_button">واپس جانے کا بٹن</string>
+    <string name="cd_close_button">بند کرنے کا بٹن</string>
+    <string name="cd_product_image">پروڈکٹ کی تصویر</string>
+    <string name="cd_remove_item">آئٹم ہٹائیں</string>
+    <string name="cd_decrease_quantity">تعداد کم کریں</string>
+    <string name="cd_increase_quantity">تعداد بڑھائیں</string>
+    <string name="cd_edit_profile">پروفائل میں ترمیم کریں</string>
+    <string name="cd_user_icon">صارف کا آئیکن</string>
+    <string name="cd_store_icon">اسٹور کا آئیکن</string>
+    <string name="cd_phone_icon">فون کا آئیکن</string>
+
 </resources>

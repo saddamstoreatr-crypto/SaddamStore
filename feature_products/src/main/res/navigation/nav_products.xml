@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_products"
+    app:startDestination="@id/pageFragment">
+
+    <fragment
+        android:id="@+id/pageFragment"
+        android:name="com.sdstore.products.ui.page.PageFragment"
+        android:label="PageFragment"
+        tools:layout="@layout/fragment_page">
+        <action
+            android:id="@+id/action_pageFragment_to_categoryProductsFragment"
+            app:destination="@id/categoryProductsFragment" />
+        <action
+            android:id="@+id/action_pageFragment_to_allPurchasedItemsFragment"
+            app:destination="@id/allPurchasedItemsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/categoryProductsFragment"
+        android:name="com.sdstore.products.ui.category.CategoryProductsFragment"
+        android:label="CategoryProductsFragment"
+        tools:layout="@layout/fragment_category_products">
+        <argument
+            android:name="category_name"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_categoryProductsFragment_to_allPurchasedItemsFragment"
+            app:destination="@id/allPurchasedItemsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/allPurchasedItemsFragment"
+        android:name="com.sdstore.products.viewmodels.AllPurchasedItemsFragment"
+        android:label="AllPurchasedItemsFragment"
+        tools:layout="@layout/fragment_all_purchased_items" />
+
+</navigation>

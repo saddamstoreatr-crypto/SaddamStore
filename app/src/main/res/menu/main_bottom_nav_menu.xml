@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
         android:id="@+id/pageFragment"
         android:icon="@drawable/ic_home"
-        android:title="@string/browse" />
+        android:title="@string/browse"
+        android:contentDescription="@string/browse" />
+
+    <item
+        android:id="@+id/deliveriesFragment"
+        android:icon="@drawable/ic_orders"
+        android:title="@string/my_orders"
+        android:contentDescription="@string/my_orders" />
+
     <item
         android:id="@+id/cartFragment"
         android:icon="@drawable/ic_cart_24dp"
-        android:title="@string/cart" />
+        android:title="@string/cart"
+        android:contentDescription="@string/cart" />
+
     <item
         android:id="@+id/accountFragment"
         android:icon="@drawable/ic_user"
-        android:title="@string/account" />
+        android:title="@string/account"
+        android:contentDescription="@string/account" />
+
 </menu>

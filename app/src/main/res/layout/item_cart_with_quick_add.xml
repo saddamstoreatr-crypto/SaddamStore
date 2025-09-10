@@ -1,44 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:orientation="vertical">
+    android:layout_margin="4dp"
+    app:cardElevation="2dp">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white">
+        android:padding="8dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cardContent"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/iv_quick_add_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:src="@tools:sample/avatars"
+            android:contentDescription="@string/cd_product_image" />
+
+        <TextView
+            android:id="@+id/tv_quick_add_name"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_toStartOf="@+id/statusColorBand"
-            android:orientation="vertical"
-            android:paddingTop="6dp"
-            android:paddingBottom="1dp"
-            android:paddingStart="14dp"
-            android:paddingEnd="4dp">
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="@id/iv_quick_add_image"
+            app:layout_constraintStart_toEndOf="@id/iv_quick_add_image"
+            app:layout_constraintEnd_toStartOf="@+id/btn_quick_add"
+            tools:text="Product Name" />
 
-        <View
-            android:id="@+id/statusColorBand"
-            android:layout_width="8dp"
-            android:layout_height="match_parent"
-            android:layout_alignTop="@+id/cardContent"
-            android:layout_alignBottom="@+id/cardContent"
-            android:layout_alignParentEnd="true"
-            android:background="@color/red4"
-            android:visibility="gone" />
+        <TextView
+            android:id="@+id/tv_quick_add_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/brand_green"
+            app:layout_constraintTop_toBottomOf="@id/tv_quick_add_name"
+            app:layout_constraintStart_toStartOf="@id/tv_quick_add_name"
+            tools:text="Rs. 250" />
 
-    </RelativeLayout>
+        <Button
+            android:id="@+id/btn_quick_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_to_cart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <View
-        android:id="@+id/skusSeparator"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/catskillWhite" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

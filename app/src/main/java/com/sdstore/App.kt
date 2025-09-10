@@ -1,33 +1,26 @@
 package com.sdstore
 
 import android.app.Application
-import android.content.res.Configuration
-import java.util.Locale
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
+import com.google.firebase.appcheck.FirebaseAppCheck
+import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class App : Application() {
-
-    companion object {
-        lateinit var instance: App
-            private set
-    }
 
     override fun onCreate() {
         super.onCreate()
-        instance = this
 
-        // Set default language to Urdu for the entire app
-        setAppLocale()
+        val firebaseAppCheck = FirebaseAppCheck.getInstance()
+        firebaseAppCheck.installAppCheckProviderFactory(
+            PlayIntegrityAppCheckProviderFactory.getInstance()
+        )
 
-        // یہاں دیگر لائبریریز (जैसे Firebase, Algolia, etc.) کو initialize کیا جائے گا
-        // ابھی کے لیے یہ خالی ہے
-    }
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
-    private fun setAppLocale() {
-        val locale = Locale("ur")
-        Locale.setDefault(locale)
-        val config = Configuration()
-        config.locale = locale
-        config.setLayoutDirection(locale)
-        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
+        val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("ur")
+        AppCompatDelegate.setApplicationLocales(appLocale)
     }
 }

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.sdstore.R
 
@@ -18,19 +19,20 @@ class ForceUpdateActivity : AppCompatActivity() {
         updateButton.setOnClickListener {
             openPlayStore()
         }
+
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                openPlayStore()
+            }
+        })
     }
 
     private fun openPlayStore() {
-        val packageName = packageName
+        val packageNameValue = packageName
         try {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageNameValue")))
         } catch (e: ActivityNotFoundException) {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageName")))
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageNameValue")))
         }
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        openPlayStore()
     }
 }

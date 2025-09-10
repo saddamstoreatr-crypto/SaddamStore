@@ -1,19 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
     app:startDestination="@id/pageFragment">
 
     <fragment
         android:id="@+id/pageFragment"
         android:name="com.sdstore.main.page.PageFragment"
-        android:label="PageFragment" />
+        android:label="PageFragment"
+        tools:layout="@layout/fragment_page">
+        <action
+            android:id="@+id/action_pageFragment_to_categoryProductsFragment"
+            app:destination="@id/categoryProductsFragment" />
+        <action
+            android:id="@+id/action_pageFragment_to_allPurchasedItemsFragment"
+            app:destination="@id/allPurchasedItemsFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.sdstore.main.cart.CartFragment"
-        android:label="CartFragment" />
+        android:name="com.sdstore.cart.ui.CartFragment"
+        android:label="CartFragment"
+        tools:layout="@layout/fragment_cart">
+        <action
+            android:id="@+id/action_cartFragment_to_deliveriesFragment"
+            app:destination="@id/deliveriesFragment"
+            app:popUpTo="@id/nav_main"
+            app:popUpToInclusive="true" />
+    </fragment>
+
     <fragment
         android:id="@+id/accountFragment"
-        android:name="com.sdstore.main.account.AccountFragment"
-        android:label="AccountFragment" />
+        android:name="com.sdstore.orders.ui.AccountFragment"
+        android:label="AccountFragment"
+        tools:layout="@layout/fragment_account" />
+
+    <fragment
+        android:id="@+id/deliveriesFragment"
+        android:name="com.sdstore.orders.ui.DeliveriesFragment"
+        android:label="DeliveriesFragment"
+        tools:layout="@layout/fragment_deliveries">
+        <action
+            android:id="@+id/action_deliveriesFragment_to_deliveryDetailFragment"
+            app:destination="@id/deliveryDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/deliveryDetailFragment"
+        android:name="com.sdstore.orders.ui.DeliveryDetailFragment"
+        android:label="DeliveryDetailFragment"
+        tools:layout="@layout/fragment_delivery_detail">
+        <argument
+            android:name="selected_order"
+            app:argType="com.sdstore.core.models.Order" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/categoryProductsFragment"
+        android:name="com.sdstore.main.page.CategoryProductsFragment"
+        android:label="CategoryProductsFragment"
+        tools:layout="@layout/fragment_category_products">
+        <argument
+            android:name="category_name"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/allPurchasedItemsFragment"
+        android:name="com.sdstore.main.page.AllPurchasedItemsFragment"
+        android:label="AllPurchasedItemsFragment"
+        tools:layout="@layout/fragment_all_purchased_items" />
+
 </navigation>
