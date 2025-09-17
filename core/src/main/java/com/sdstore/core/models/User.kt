@@ -11,5 +11,6 @@ data class User(
     val outletName: String = "",
     val location: String = "",
     @ServerTimestamp
-    val createdAt: Date? = null
+    val createdAt: Date? = null,
+    val imageUrl: String = ""
 )

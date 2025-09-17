@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.sdstore.auth.R
-import com.sdstore.auth.databinding.FragmentStartBinding
+import com.sdstore.feature_auth.R
+import com.sdstore.feature_auth.databinding.FragmentStartBinding
 
 class StartFragment : Fragment() {
 

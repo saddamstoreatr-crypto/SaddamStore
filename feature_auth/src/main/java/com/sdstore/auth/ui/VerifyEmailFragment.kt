@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.sdstore.auth.R
-import com.sdstore.auth.databinding.FragmentVerifyEmailBinding
+import com.sdstore.feature_auth.R
+import com.sdstore.feature_auth.databinding.FragmentVerifyEmailBinding
 
 class VerifyEmailFragment : Fragment() {
 

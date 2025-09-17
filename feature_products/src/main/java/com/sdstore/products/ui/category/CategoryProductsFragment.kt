@@ -51,10 +51,10 @@ class CategoryProductsFragment : Fragment() {
                 cartViewModel.addToCart(sku)
             },
             onIncreaseClick = { sku ->
-                cartViewModel.increaseQuantity(sku.id)
+                cartViewModel.increaseQuantity(sku)
             },
             onDecreaseClick = { sku ->
-                cartViewModel.decreaseQuantity(sku.id)
+                cartViewModel.decreaseQuantity(sku)
             }
         )
         binding.rvCategoryProducts.layoutManager = GridLayoutManager(context, 2)

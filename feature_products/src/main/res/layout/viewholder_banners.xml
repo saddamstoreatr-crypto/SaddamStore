@@ -6,7 +6,7 @@
     android:paddingVertical="8dp">
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/view_pager_banners"
+        android:id="@+id/bannerViewPager"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintDimensionRatio="H,16:9"

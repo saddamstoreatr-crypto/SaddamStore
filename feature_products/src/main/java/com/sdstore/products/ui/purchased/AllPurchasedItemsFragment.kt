@@ -35,28 +35,40 @@ class AllPurchasedItemsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         observeViewModel()
-        viewModel.loadPurchasedItems()
     }
 
     private fun setupRecyclerView() {
         adapter = AllPurchasedItemsAdapter(
             onAddToCartClick = { sku -> cartViewModel.addToCart(sku) },
-            onIncreaseClick = { sku -> cartViewModel.increaseQuantity(sku.id) },
-            onDecreaseClick = { sku -> cartViewModel.decreaseQuantity(sku.id) }
+            onIncreaseClick = { sku -> cartViewModel.increaseQuantity(sku) },
+            onDecreaseClick = { sku -> cartViewModel.decreaseQuantity(sku) }
         )
         binding.rvPurchasedItems.layoutManager = LinearLayoutManager(context)
         binding.rvPurchasedItems.adapter = adapter
     }
 
     private fun observeViewModel() {
-        viewModel.purchasedItems.observe(viewLifecycleOwner) { items ->
-            if (items.isNullOrEmpty()) {
-                binding.tvEmpty.visibility = View.VISIBLE
-                binding.rvPurchasedItems.visibility = View.GONE
-            } else {
-                binding.tvEmpty.visibility = View.GONE
-                binding.rvPurchasedItems.visibility = View.VISIBLE
-                adapter.submitList(items)
+        lifecycleScope.launch {
+            viewModel.itemsState.collect { state ->
+                when (state) {
+                    is UiState.Loading -> {
+                        // Show loading indicator
+                    }
+                    is UiState.Success -> {
+                        val items = state.data
+                        if (items.isNullOrEmpty()) {
+                            binding.tvEmpty.visibility = View.VISIBLE
+                            binding.rvPurchasedItems.visibility = View.GONE
+                        } else {
+                            binding.tvEmpty.visibility = View.GONE
+                            binding.rvPurchasedItems.visibility = View.VISIBLE
+                            adapter.submitList(items)
+                        }
+                    }
+                    is UiState.Error -> {
+                        // Show error message
+                    }
+                }
             }
         }
     }

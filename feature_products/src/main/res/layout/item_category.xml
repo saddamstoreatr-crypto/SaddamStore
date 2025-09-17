@@ -16,7 +16,7 @@
         android:padding="8dp">
 
         <ImageView
-            android:id="@+id/categoryImageView"
+            android:id="@+id/ivCategoryImage"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:scaleType="centerCrop"
@@ -24,7 +24,7 @@
             android:contentDescription="@string/category_image" />
 
         <TextView
-            android:id="@+id/categoryNameTextView"
+            android:id="@+id/tvCategoryName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

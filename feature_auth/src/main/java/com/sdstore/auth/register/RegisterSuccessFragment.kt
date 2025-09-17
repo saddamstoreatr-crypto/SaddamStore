@@ -10,8 +10,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.sdstore.R
-import com.sdstore.auth.databinding.FragmentRegisterSuccessBinding
 import com.sdstore.auth.viewmodels.RegisterViewModel
+import com.sdstore.feature_auth.databinding.FragmentRegisterSuccessBinding
 import com.sdstore.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,7 +34,7 @@ class RegisterSuccessFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (viewModel.outletName.value.isNullOrEmpty()) {
+        if (viewModel.outletName.isNullOrEmpty()) {
             binding.successText.text = getString(R.string.registration_successful)
         } else {
             binding.successText.text = getString(R.string.outlet_has_been_registered)

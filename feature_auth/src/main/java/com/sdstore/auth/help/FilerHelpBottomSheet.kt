@@ -9,8 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.sdstore.auth.R
-import com.sdstore.auth.databinding.BottomSheetFilerHelpBinding
+import com.sdstore.R
+import com.sdstore.feature_auth.databinding.BottomSheetFilerHelpBinding
 
 class FilerHelpBottomSheet : BottomSheetDialogFragment() {
 

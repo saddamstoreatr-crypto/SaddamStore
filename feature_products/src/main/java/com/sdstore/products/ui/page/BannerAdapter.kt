@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.Glide
 import com.sdstore.core.models.Banner
-import com.sdstore.feature_products.R
 import com.sdstore.feature_products.databinding.ItemBannerImageBinding
 
 class BannerAdapter(

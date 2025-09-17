@@ -38,7 +38,7 @@ class SearchFragment : Fragment() {
         setupRecyclerView()
         observeViewModel()
 
-        binding.searchBar.etSearch.doOnTextChanged { text, _, _, _ ->
+        binding.searchBar.doOnTextChanged { text, _, _, _ ->
             viewModel.searchProducts(text.toString())
         }
     }
@@ -47,8 +47,8 @@ class SearchFragment : Fragment() {
         adapter = ProductAdapter(
             onItemClick = { /* Handle item click */ },
             onAddToCartClick = { sku -> cartViewModel.addToCart(sku) },
-            onIncreaseClick = { sku -> cartViewModel.increaseQuantity(sku.id) },
-            onDecreaseClick = { sku -> cartViewModel.decreaseQuantity(sku.id) }
+            onIncreaseClick = { sku -> cartViewModel.increaseQuantity(sku) },
+            onDecreaseClick = { sku -> cartViewModel.decreaseQuantity(sku) }
         )
         binding.rvSearchResults.layoutManager = LinearLayoutManager(context)
         binding.rvSearchResults.adapter = adapter

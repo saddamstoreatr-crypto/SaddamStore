@@ -45,16 +45,16 @@ dependencies {
     api(libs.androidx.splashscreen)
 
     // Hilt for DI
-    implementation(libs.hilt.android)
+    api(libs.hilt.android)
     ksp(libs.hilt.compiler)
 
     // Firebase
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.auth)
-    implementation(libs.firebase.firestore)
-    implementation(libs.firebase.storage)
-    implementation(libs.firebase.messaging)
-    implementation(libs.firebase.database)
+    api(platform(libs.firebase.bom))
+    api(libs.firebase.auth)
+    api(libs.firebase.firestore)
+    api(libs.firebase.storage)
+    api(libs.firebase.messaging)
+    api(libs.firebase.database)
 
     // Room Database
     api(libs.androidx.room.runtime)
@@ -62,17 +62,22 @@ dependencies {
     ksp(libs.androidx.room.compiler)
 
     // Retrofit for Networking
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.converter.gson)
+    api(libs.retrofit)
+    api(libs.retrofit.converter.gson)
 
     // Coroutines
-    implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.kotlinx.coroutines.playservices)
+    api(libs.kotlinx.coroutines.android)
+    api(libs.kotlinx.coroutines.playservices)
 
     // Glide for Image Loading
     api(libs.glide)
     ksp(libs.glide.compiler)
 
     // Shimmer for UI
-    implementation(libs.shimmer)
+    api(libs.shimmer)
+
+    // Navigation
+    api(libs.androidx.navigation.fragment.ktx)
+    api(libs.androidx.navigation.ui.ktx)
+    api(libs.androidx.fragment.ktx)
 }

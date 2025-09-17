@@ -8,8 +8,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.sdstore.R
-import com.sdstore.auth.databinding.FragmentUserNameBinding
+import com.sdstore.feature_auth.R
+import com.sdstore.feature_auth.databinding.FragmentUserNameBinding
 import com.sdstore.auth.viewmodels.RegisterViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,8 +28,8 @@ class UserNameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (viewModel.userName.value.isNotEmpty()) {
-            findNavController().navigate(com.sdstore.auth.R.id.action_userNameFragment_to_outletNameFragment)
+        if (viewModel.userName?.isNotEmpty() == true) {
+            findNavController().navigate(R.id.action_userNameFragment_to_outletNameFragment)
             return
         }
 
@@ -37,9 +37,9 @@ class UserNameFragment : Fragment() {
             val name = binding.nameEditText.text.toString().trim()
             if (name.isNotEmpty()) {
                 viewModel.saveUserName(name)
-                findNavController().navigate(com.sdstore.auth.R.id.action_userNameFragment_to_outletNameFragment)
+                findNavController().navigate(R.id.action_userNameFragment_to_outletNameFragment)
             } else {
-                Toast.makeText(context, getString(R.string.please_enter_name), Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(com.sdstore.R.string.please_enter_name), Toast.LENGTH_SHORT).show()
             }
         }
 

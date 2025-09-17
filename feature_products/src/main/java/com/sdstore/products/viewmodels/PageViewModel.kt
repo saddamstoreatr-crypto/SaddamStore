@@ -30,15 +30,18 @@ class PageViewModel @Inject constructor(
         viewModelScope.launch {
             _homePageItems.value = listOf(HomePageItem.Loading)
             try {
-                val banners = productRepository.getBanners()
-                val categories = productRepository.getCategories()
-                val regularItems = productRepository.getRegularItems()
-                val items = mutableListOf<HomePageItem>()
-                items.add(HomePageItem.Banners(banners))
-                items.add(HomePageItem.Categories(categories))
-                items.add(HomePageItem.Title("Regular Items", "regular"))
-                items.add(HomePageItem.RegularItems("Your Regular Items", regularItems, "regular"))
-                _homePageItems.value = items
+                productRepository.getBanners().collect { banners ->
+                    productRepository.getCategories().collect { categories ->
+                        productRepository.getRegularItems().collect { regularItems ->
+                            val items = mutableListOf<HomePageItem>()
+                            items.add(HomePageItem.Banners(banners))
+                            items.add(HomePageItem.CategoriesList(categories))
+                            items.add(HomePageItem.Title("Regular Items"))
+                            items.add(HomePageItem.RegularItems(regularItems, "Your Regular Items"))
+                            _homePageItems.value = items
+                        }
+                    }
+                }
             } catch (e: Exception) {
                 // Handle error
             }

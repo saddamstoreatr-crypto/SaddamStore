@@ -13,8 +13,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.sdstore.auth.R
-import com.sdstore.auth.databinding.FragmentLoginBinding
+import com.sdstore.feature_auth.R
+import com.sdstore.feature_auth.databinding.FragmentLoginBinding
 import com.sdstore.auth.viewmodels.AuthViewModel
 import com.sdstore.core.data.Result
 import com.sdstore.core.viewmodels.UserViewModel // CORE SE IMPORT KAREIN
@@ -51,7 +51,7 @@ class LoginFragment : Fragment() {
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 authViewModel.loginWithEmail(email, password)
             } else {
-                Toast.makeText(requireContext(), getString(R.string.fill_all_fields), Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(com.sdstore.R.string.fill_all_fields), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -71,11 +71,16 @@ class LoginFragment : Fragment() {
                     binding.progressBar.isVisible = state is AuthViewModel.AuthState.Loading
                     binding.btnLogin.isEnabled = state !is AuthViewModel.AuthState.Loading
 
-                    if (state is AuthViewModel.AuthState.Success) {
-                        checkUserProfile()
-                        authViewModel.resetLoginState()
-                    } else if (state is AuthViewModel.AuthState.Error) {
-                        Toast.makeText(context, state.message, Toast.LENGTH_LONG).show()
+                    when (state) {
+                        is AuthViewModel.AuthState.Success -> {
+                            checkUserProfile()
+                            authViewModel.resetLoginState()
+                        }
+                        is AuthViewModel.AuthState.Error -> {
+                            Toast.makeText(context, state.message, Toast.LENGTH_LONG).show()
+                        }
+                        is AuthViewModel.AuthState.Loading -> { /* Handled by isVisible binding */ }
+                        is AuthViewModel.AuthState.Idle -> { /* Do nothing */ }
                     }
                 }
             }

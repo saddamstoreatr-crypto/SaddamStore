@@ -12,8 +12,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
-import com.sdstore.R
-import com.sdstore.auth.databinding.FragmentSignupBinding
+import com.sdstore.feature_auth.R
+import com.sdstore.feature_auth.databinding.FragmentSignupBinding
 import com.sdstore.auth.viewmodels.AuthViewModel
 import com.sdstore.auth.viewmodels.RegisterViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,7 +47,7 @@ class SignUpFragment : Fragment() {
                 registerViewModel.saveUserName(name)
                 authViewModel.signUpWithEmail(email, password, name)
             } else {
-                Toast.makeText(context, getString(R.string.fill_all_fields), Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(com.sdstore.R.string.fill_all_fields), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -61,8 +61,8 @@ class SignUpFragment : Fragment() {
 
                     when (state) {
                         is AuthViewModel.AuthState.Success -> {
-                            Toast.makeText(context, getString(R.string.account_created_verify_email), Toast.LENGTH_LONG).show()
-                            findNavController().navigate(com.sdstore.auth.R.id.action_signUpFragment_to_verifyEmailFragment)
+                            Toast.makeText(context, getString(com.sdstore.R.string.account_created_verify_email), Toast.LENGTH_LONG).show()
+                            findNavController().navigate(R.id.action_signUpFragment_to_verifyEmailFragment)
                             authViewModel.resetSignUpState()
                         }
                         is AuthViewModel.AuthState.Error -> {

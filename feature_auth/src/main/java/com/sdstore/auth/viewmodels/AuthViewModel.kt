@@ -129,6 +129,9 @@ class AuthViewModel @Inject constructor(
                         is Result.Error -> {
                             _otpVerificationState.value = OtpVerificationState.Error("User data check karne mein masla hua.")
                         }
+                        is Result.Loading -> {
+                            // Can be ignored in this specific case as we have a separate loading state
+                        }
                     }
                 } else {
                     _otpVerificationState.value = OtpVerificationState.Error("Login nakaam hua.")

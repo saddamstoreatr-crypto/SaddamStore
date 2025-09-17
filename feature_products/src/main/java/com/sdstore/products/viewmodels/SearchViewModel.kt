@@ -25,7 +25,9 @@ class SearchViewModel @Inject constructor(
         }
         viewModelScope.launch {
             try {
-                _searchResults.value = productRepository.searchProducts(query)
+                productRepository.searchProducts(query).collect {
+                    _searchResults.value = it
+                }
             } catch (e: Exception) {
                 // Handle error
             }

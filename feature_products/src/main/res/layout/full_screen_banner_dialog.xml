@@ -8,14 +8,14 @@
     android:focusable="true">
 
     <ImageView
-        android:id="@+id/fullScreenBannerImageView"
+        android:id="@+id/ivBanner"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitCenter"
         android:contentDescription="@string/full_screen_banner" />
 
     <ImageButton
-        android:id="@+id/closeButton"
+        android:id="@+id/btnClose"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_gravity="top|start"

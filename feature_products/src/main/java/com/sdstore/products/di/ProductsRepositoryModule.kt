@@ -11,7 +11,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object `ProductsRepositoryModule.kt` {
+object ProductsRepositoryModule {
 
     @Provides
     @Singleton

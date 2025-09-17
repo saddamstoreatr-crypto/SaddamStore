@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sdstore.core.models.CartItem
-import com.sdstore.feature_cart.R // Fix: R file ko import kiya gaya hai.
+import com.sdstore.core.R // Fix: R file ko import kiya gaya hai.
 import com.sdstore.feature_cart.databinding.ItemCartBinding
 
 interface CartItemListener {

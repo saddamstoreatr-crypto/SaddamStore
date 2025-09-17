@@ -1,18 +1,12 @@
-package com.sdstore.auth
+package com.sdstore.core.di
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.sdstore.feature_auth.databinding.ActivityAuthBinding
-import dagger.hilt.android.AndroidEntryPoint
+import com.sdstore.core.data.repository.UserRepository
+import dagger.hilt.EntryPoint
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 
-@AndroidEntryPoint
-class AuthActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityAuthBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityAuthBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-    }
+@EntryPoint
+@InstallIn(SingletonComponent::class)
+interface AuthModuleDependencies {
+    fun userRepository(): UserRepository
 }

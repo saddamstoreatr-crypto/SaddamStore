@@ -46,7 +46,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_all_items"
+        android:id="@+id/rvPurchasedItems"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:clipToPadding="false"
@@ -58,7 +58,7 @@
         tools:listitem="@layout/item_product" />
 
     <TextView
-        android:id="@+id/tv_empty_items"
+        android:id="@+id/tvEmpty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/no_purchased_items_found"

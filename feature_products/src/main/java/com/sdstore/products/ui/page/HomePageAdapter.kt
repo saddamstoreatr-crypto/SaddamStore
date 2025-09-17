@@ -31,9 +31,11 @@ class HomePageAdapter(
     override fun getItemViewType(position: Int): Int {
         return when (items[position]) {
             is HomePageItem.Banners -> VIEW_TYPE_BANNERS
-            is HomePageItem.Categories -> VIEW_TYPE_CATEGORIES
-            is HomePageItem.RegularItems -> VIEW_TYPE_REGULAR_ITEMS
+            is HomePageItem.CategoriesList -> VIEW_TYPE_CATEGORIES
+            is HomePageItem.ProductItem -> VIEW_TYPE_PRODUCT_ITEM
             is HomePageItem.Title -> VIEW_TYPE_TITLE
+            is HomePageItem.RegularItems -> VIEW_TYPE_REGULAR_ITEMS
+            is HomePageItem.RecentItems -> VIEW_TYPE_RECENT_ITEMS
             is HomePageItem.Loading -> VIEW_TYPE_LOADING
         }
     }
@@ -53,6 +55,12 @@ class HomePageAdapter(
             VIEW_TYPE_TITLE -> TitleViewHolder(
                 ItemTitleBinding.inflate(inflater, parent, false)
             )
+            VIEW_TYPE_PRODUCT_ITEM -> ProductItemViewHolder(
+                ItemProductBinding.inflate(inflater, parent, false)
+            )
+            VIEW_TYPE_RECENT_ITEMS -> RecentItemsViewHolder(
+                ItemRecentOrderBinding.inflate(inflater, parent, false)
+            )
             else -> LoadingViewHolder(
                 ItemLoadingBinding.inflate(inflater, parent, false)
             )
@@ -62,9 +70,11 @@ class HomePageAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (val item = items[position]) {
             is HomePageItem.Banners -> (holder as BannersViewHolder).bind(item.banners)
-            is HomePageItem.Categories -> (holder as CategoriesViewHolder).bind(item.categories)
+            is HomePageItem.CategoriesList -> (holder as CategoriesViewHolder).bind(item.categories)
+            is HomePageItem.ProductItem -> (holder as ProductItemViewHolder).bind(item.sku)
             is HomePageItem.RegularItems -> (holder as RegularItemsViewHolder).bind(item)
             is HomePageItem.Title -> (holder as TitleViewHolder).bind(item)
+            is HomePageItem.RecentItems -> (holder as RecentItemsViewHolder).bind(item.items)
             is HomePageItem.Loading -> { /* No data to bind for loading state */ }
         }
     }
@@ -111,7 +121,7 @@ class HomePageAdapter(
         }
 
         fun bind(item: HomePageItem.RegularItems) {
-            productAdapter.submitList(item.items)
+            productAdapter.submitList(item.skus)
             binding.tvTitle.text = item.title
             binding.tvViewAll.setOnClickListener { onViewAllClick(item.title) }
         }
@@ -120,8 +130,22 @@ class HomePageAdapter(
     inner class TitleViewHolder(private val binding: ItemTitleBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: HomePageItem.Title) {
-            binding.tvTitle.text = item.title
-            binding.tvViewAll.setOnClickListener { onViewAllClick(item.title) }
+            binding.tvTitle.text = item.text
+            binding.tvViewAll.setOnClickListener { onViewAllClick(item.text) }
+        }
+    }
+
+    inner class ProductItemViewHolder(private val binding: ItemProductBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(sku: Sku) {
+            // Bind SKU data to the views in item_product.xml
+        }
+    }
+
+    inner class RecentItemsViewHolder(private val binding: ItemRecentOrderBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(items: List<com.sdstore.core.models.OrderItem>) {
+            // Bind recent items data to the views in item_recent_order.xml
         }
     }
 
@@ -133,5 +157,7 @@ class HomePageAdapter(
         private const val VIEW_TYPE_REGULAR_ITEMS = 2
         private const val VIEW_TYPE_TITLE = 3
         private const val VIEW_TYPE_LOADING = 4
+        private const val VIEW_TYPE_PRODUCT_ITEM = 5
+        private const val VIEW_TYPE_RECENT_ITEMS = 6
     }
 }

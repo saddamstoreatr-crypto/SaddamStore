@@ -39,6 +39,9 @@ class AllPurchasedItemsViewModel @Inject constructor(
                 is Result.Error -> {
                     _itemsState.value = UiState.Error(application.getString(R.string.error_loading_items))
                 }
+                is Result.Loading -> {
+                    // This state is already handled by setting _itemsState.value = UiState.Loading before the call
+                }
             }
         }
     }

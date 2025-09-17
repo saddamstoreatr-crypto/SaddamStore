@@ -8,11 +8,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.Firebase
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.sdstore.auth.R
-import com.sdstore.auth.databinding.FragmentEnterUserPhoneBinding
+import com.sdstore.feature_auth.R
+import com.sdstore.feature_auth.databinding.FragmentEnterUserPhoneBinding
 import com.sdstore.auth.viewmodels.RegisterViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -38,7 +37,7 @@ class EnterUserPhoneFragment : Fragment() {
         val currentUser = Firebase.auth.currentUser
         if (!currentUser?.phoneNumber.isNullOrEmpty()) {
             viewModel.saveUserPhone(currentUser!!.phoneNumber!!)
-            findNavController().navigate(com.sdstore.auth.R.id.action_enterUserPhoneFragment_to_outletLocationFragment)
+            findNavController().navigate(R.id.action_enterUserPhoneFragment_to_outletLocationFragment)
             return
         }
 
@@ -50,9 +49,9 @@ class EnterUserPhoneFragment : Fragment() {
             val phoneNumber = binding.phoneEditText.text.toString().trim()
             if (phoneNumber.length == 11 && phoneNumber.startsWith("03")) {
                 viewModel.saveUserPhone(phoneNumber)
-                findNavController().navigate(com.sdstore.auth.R.id.action_enterUserPhoneFragment_to_outletLocationFragment)
+                findNavController().navigate(R.id.action_enterUserPhoneFragment_to_outletLocationFragment)
             } else {
-                Toast.makeText(context, getString(R.string.please_enter_phone_number), Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(com.sdstore.R.string.please_enter_phone_number), Toast.LENGTH_SHORT).show()
             }
         }
     }
