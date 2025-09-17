@@ -38,5 +38,6 @@ dependencies {
 
     // Hilt for DI
     implementation(libs.hilt.android)
+    implementation(project(":feature_cart"))
     ksp(libs.hilt.compiler)
 }
