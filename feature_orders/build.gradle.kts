@@ -3,11 +3,10 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.navigation.safeargs)
 }
 
 android {
-    namespace = "com.sdstore.feature_orders"
+    namespace = "com.sdstore.feature_cart"
     compileSdk = 34
 
     defaultConfig {
@@ -33,22 +32,12 @@ android {
 }
 
 dependencies {
-    implementation(project(":app"))
     implementation(project(":core"))
 
-    // Navigation and Fragment KTX
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
+    // Fragment KTX
     implementation(libs.androidx.fragment.ktx)
 
     // Hilt for DI
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
-
-    // ✅ YEH DEPENDENCIES KSP ERROR THEEK KARENGI
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.firestore)
-
-// Glide
-implementation(libs.glide)
 }

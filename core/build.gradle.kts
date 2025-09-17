@@ -70,7 +70,8 @@ dependencies {
     implementation(libs.kotlinx.coroutines.playservices)
 
     // Glide for Image Loading
-    implementation(libs.glide)
+    api(libs.glide)
+    ksp(libs.glide.compiler)
 
     // Shimmer for UI
     implementation(libs.shimmer)

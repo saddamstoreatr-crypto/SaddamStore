@@ -87,6 +87,7 @@ kotlinx-coroutines-playservices = { group = "org.jetbrains.kotlinx", name = "kot
 
 # Others
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide" }
 shimmer = { group = "com.facebook.shimmer", name = "shimmer", version.ref = "shimmer" }
 lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie"}
 

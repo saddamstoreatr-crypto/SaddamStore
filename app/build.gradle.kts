@@ -50,8 +50,10 @@ android {
 dependencies {
     // Project Modules
     implementation(project(":core"))
-    // ⛔ Yahan se tamam feature modules ki implementation dependencies hata di gai hain.
-    // Yehi circular dependency ki wajah theen.
+    implementation(project(":feature_auth"))
+    implementation(project(":feature_cart"))
+    implementation(project(":feature_orders"))
+    implementation(project(":feature_products"))
 
     // AndroidX & UI
     implementation(libs.androidx.core.ktx)

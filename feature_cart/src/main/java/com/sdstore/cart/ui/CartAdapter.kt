@@ -23,7 +23,6 @@ class CartAdapter(private val listener: CartItemListener) :
         fun bind(item: CartItem) {
             binding.apply {
                 tvProductName.text = item.sku.name
-                // Fix: 'price' ab sku object se sahi tarah access hoga.
                 tvProductPrice.text = "Rs ${item.sku.price}"
                 tvQuantity.text = item.quantity.toString()
 
@@ -51,7 +50,6 @@ class CartAdapter(private val listener: CartItemListener) :
     }
 
     class CartDiffCallback : DiffUtil.ItemCallback<CartItem>() {
-        // Fix: 'id' ab sku object se sahi tarah access hoga.
         override fun areItemsTheSame(oldItem: CartItem, newItem: CartItem): Boolean {
             return oldItem.sku.id == newItem.sku.id
         }

@@ -33,7 +33,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":app"))
     implementation(project(":core"))
 
     // Navigation and Fragment KTX
@@ -51,8 +50,4 @@ dependencies {
     // Play Services for Location
     implementation(libs.play.services.location)
 
-    // ✅ YEH DEPENDENCIES KSP ERROR THEEK KARENGI
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.auth)
-    implementation(libs.firebase.firestore)
 }
