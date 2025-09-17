@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.sdstore.feature_cart"
+    namespace = "com.sdstore.feature_orders"
     compileSdk = 34
 
     defaultConfig {
@@ -16,9 +16,13 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -35,10 +39,12 @@ dependencies {
     implementation(project(":app"))
     implementation(project(":core"))
 
-    // Fragment KTX
+    // Fragment + Navigation
     implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
-    // Hilt for DI
+    // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 }

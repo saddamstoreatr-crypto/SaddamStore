@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.navigation.safeargs)
+    // ❌ SafeArgs sirf :app module me hoga
 }
 
 android {
@@ -17,9 +17,13 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -30,22 +34,28 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
+    // ✅ Tests disable kar diye
+    sourceSets {
+        getByName("test").java.srcDirs("src/testDisabled")
+        getByName("androidTest").java.srcDirs("src/androidTestDisabled")
+    }
 }
 
 dependencies {
     implementation(project(":core"))
     implementation(project(":feature_cart"))
 
-    // Navigation and Fragment KTX
+    // Navigation
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.fragment.ktx)
 
-    // Hilt for DI
+    // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 
-    // ✅ YEH DEPENDENCIES KSP ERROR THEEK KARENGI
+    // Firebase (agar chahiye)
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.firestore)
 

@@ -17,9 +17,13 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -33,18 +37,16 @@ android {
 }
 
 dependencies {
-    // Common AndroidX libs that other modules will also need
+    // Common AndroidX
     api(libs.androidx.core.ktx)
     api(libs.androidx.appcompat)
     api(libs.material)
     api(libs.androidx.constraintlayout)
     api(libs.androidx.lifecycle.viewmodel.ktx)
     api(libs.androidx.lifecycle.runtime.ktx)
-
-    // ✅ YEH LINE SPLASH SCREEN KA ERROR THEEK KAREGI
     api(libs.androidx.splashscreen)
 
-    // Hilt for DI
+    // Hilt
     api(libs.hilt.android)
     ksp(libs.hilt.compiler)
 
@@ -56,12 +58,12 @@ dependencies {
     api(libs.firebase.messaging)
     api(libs.firebase.database)
 
-    // Room Database
+    // Room
     api(libs.androidx.room.runtime)
     api(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
 
-    // Retrofit for Networking
+    // Retrofit
     api(libs.retrofit)
     api(libs.retrofit.converter.gson)
 
@@ -69,11 +71,11 @@ dependencies {
     api(libs.kotlinx.coroutines.android)
     api(libs.kotlinx.coroutines.playservices)
 
-    // Glide for Image Loading
+    // Glide
     api(libs.glide)
     ksp(libs.glide.compiler)
 
-    // Shimmer for UI
+    // Shimmer
     api(libs.shimmer)
 
     // Navigation

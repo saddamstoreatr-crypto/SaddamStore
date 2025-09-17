@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.navigation.safeargs)
 }
 
 android {
@@ -17,9 +16,13 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -36,19 +39,18 @@ dependencies {
     implementation(project(":app"))
     implementation(project(":core"))
 
-    // Navigation and Fragment KTX
+    // Navigation + Fragments
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.fragment.ktx)
 
-    // Hilt for DI
+    // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 
-    // Lottie for Animations
+    // Lottie
     implementation(libs.lottie)
 
-    // Play Services for Location
+    // Play Services Location
     implementation(libs.play.services.location)
-
 }

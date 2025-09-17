@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.ksp)
+    // ❌ SafeArgs yahan nahi hoga
 }
 
 android {
@@ -16,9 +17,13 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -33,20 +38,16 @@ android {
 
 dependencies {
     implementation(project(":app"))
-    implementation(libs.glide)
-
-
     implementation(project(":core"))
 
-    // Fragment KTX
+    // Fragment
     implementation(libs.androidx.fragment.ktx)
 
-    // Hilt for DI
+    // Navigation (SafeArgs ka sirf runtime part use hoga)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+
+    // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
-
-    // ✅ YEH DEPENDENCIES KSP ERROR THEEK KARENGI
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.auth)
-    implementation(libs.firebase.firestore)
 }
