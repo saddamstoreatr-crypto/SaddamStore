@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
-import com.sdstore.R
+import com.sdstore.auth.R
 import com.sdstore.auth.databinding.FragmentEnterOtpBinding
 import com.sdstore.auth.register.RegisterActivity
 import com.sdstore.auth.viewmodels.AuthViewModel

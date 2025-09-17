@@ -1,16 +1,28 @@
 package com.sdstore.core.networking
 
-import android.util.Log
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.tasks.await
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class FcmRepository(private val apiService: ApiService) {
+interface FcmRepository {
+    suspend fun sendFcmToken(token: String)
+}
 
-    suspend fun sendTokenToServer(token: String) {
-        try {
-            val request = FcmTokenRequest(token = token)
-            apiService.updateFcmToken(request)
-            Log.d("FcmRepository", "FCM ٹوکن کامیابی سے سرور پر بھیج دیا گیا۔")
-        } catch (e: Exception) {
-            Log.e("ApiError", "FCM ٹوکن بھیجنے میں ایرر: ", e)
+@Singleton
+class FcmRepositoryImpl @Inject constructor(
+    private val firestore: FirebaseFirestore,
+    private val auth: FirebaseAuth
+) : FcmRepository {
+
+    override suspend fun sendFcmToken(token: String) {
+        auth.currentUser?.let { user ->
+            firestore.collection("users").document(user.uid).update(
+                mapOf(
+                    "fcmToken" to token
+                )
+            ).await()
         }
     }
 }

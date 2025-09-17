@@ -2,6 +2,11 @@ package com.sdstore.core.di
 
 import android.content.Context
 import androidx.room.Room
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.sdstore.core.data.local.AppDatabase
 import com.sdstore.core.data.local.ProductDao
 import dagger.Module
@@ -29,5 +34,17 @@ object DatabaseModule {
     @Singleton
     fun provideProductDao(appDatabase: AppDatabase): ProductDao {
         return appDatabase.productDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideFirestore(): FirebaseFirestore {
+        return Firebase.firestore
+    }
+
+    @Provides
+    @Singleton
+    fun provideAuth(): FirebaseAuth {
+        return Firebase.auth
     }
 }

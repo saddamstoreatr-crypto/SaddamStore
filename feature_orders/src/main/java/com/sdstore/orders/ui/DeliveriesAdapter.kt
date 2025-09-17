@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.sdstore.R
 import com.sdstore.core.models.Order
-import com.sdstore.orders.databinding.ItemDeliveryBinding
+import com.sdstore.feature_orders.R
+import com.sdstore.feature_orders.databinding.ItemDeliveryBinding
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Locale

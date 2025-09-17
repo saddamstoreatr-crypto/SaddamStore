@@ -4,32 +4,31 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.sdstore.cart.viewmodels.CartViewModel
-import com.sdstore.core.models.Sku
-import com.sdstore.products.databinding.FragmentSearchBinding
-import com.sdstore.products.ui.detail.ItemDetailDialog
+import com.sdstore.feature_products.databinding.FragmentSearchBinding
 import com.sdstore.products.ui.page.ProductAdapter
 import com.sdstore.products.viewmodels.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
+
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: SearchViewModel by activityViewModels()
-    private val cartViewModel: CartViewModel by activityViewModels()
-    private lateinit var productAdapter: ProductAdapter
+    private val viewModel: SearchViewModel by viewModels()
+    private val cartViewModel: CartViewModel by viewModels()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    private lateinit var adapter: ProductAdapter
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -37,51 +36,28 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
-        setupObservers()
+        observeViewModel()
 
-        binding.etSearch.addTextChangedListener { text ->
+        binding.searchBar.etSearch.doOnTextChanged { text, _, _, _ ->
             viewModel.searchProducts(text.toString())
         }
     }
 
     private fun setupRecyclerView() {
-        productAdapter = ProductAdapter(
-            onCartAction = { sku, newQuantity ->
-                if (newQuantity > 0) {
-                    cartViewModel.updateItemQuantity(sku, newQuantity)
-                } else {
-                    cartViewModel.removeFromCart(sku)
-                }
-            },
-            onItemClick = { sku ->
-                showItemDetailDialog(sku)
-            }
+        adapter = ProductAdapter(
+            onItemClick = { /* Handle item click */ },
+            onAddToCartClick = { sku -> cartViewModel.addToCart(sku) },
+            onIncreaseClick = { sku -> cartViewModel.increaseQuantity(sku.id) },
+            onDecreaseClick = { sku -> cartViewModel.decreaseQuantity(sku.id) }
         )
-        binding.rvSearchResults.layoutManager = GridLayoutManager(context, 2)
-        binding.rvSearchResults.adapter = productAdapter
+        binding.rvSearchResults.layoutManager = LinearLayoutManager(context)
+        binding.rvSearchResults.adapter = adapter
     }
 
-    private fun setupObservers() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-
-                launch {
-                    viewModel.searchResults.collect { results ->
-                        productAdapter.submitList(results)
-                    }
-                }
-
-                launch {
-                    cartViewModel.cartItems.collect { cartItems ->
-                        productAdapter.updateCartItems(cartItems)
-                    }
-                }
-            }
+    private fun observeViewModel() {
+        viewModel.searchResults.observe(viewLifecycleOwner) { results ->
+            adapter.submitList(results)
         }
-    }
-
-    private fun showItemDetailDialog(sku: Sku) {
-        ItemDetailDialog.newInstance(sku).show(parentFragmentManager, "ItemDetailDialog")
     }
 
     override fun onDestroyView() {

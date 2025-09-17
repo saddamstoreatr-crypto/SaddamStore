@@ -15,7 +15,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sdstore.core.viewmodels.UiState
-import com.sdstore.orders.databinding.FragmentDeliveriesBinding
+import com.sdstore.feature_orders.databinding.FragmentDeliveriesBinding
 import com.sdstore.orders.viewmodels.DeliveryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -43,7 +43,6 @@ class DeliveriesFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        // Har baar jab user is screen par wapis aye to list refresh karein
         deliveryViewModel.refreshOrders()
     }
 

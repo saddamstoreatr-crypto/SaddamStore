@@ -1,45 +1,32 @@
 package com.sdstore.main.bannerhtml
 
-import android.app.Dialog
 import android.os.Bundle
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebViewClient
-import android.widget.FrameLayout
-import com.google.android.material.R
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.sdstore.R
-import com.sdstore.products.databinding.BannerHtmlDialogBinding
+import androidx.fragment.app.DialogFragment
+import com.sdstore.feature_products.R
+import com.sdstore.feature_products.databinding.BannerHtmlDialogBinding
 
-class BannerHtmlDialog : BottomSheetDialogFragment() {
+class BannerHtmlDialog : DialogFragment() {
 
     private var _binding: BannerHtmlDialogBinding? = null
     private val binding get() = _binding!!
 
+    private var htmlContent: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.FullScreenBottomSheetDialogTheme)
-    }
-
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog = super.onCreateDialog(savedInstanceState)
-        dialog.setOnShowListener { dialogInterface ->
-            val bottomSheetDialog = dialogInterface as BottomSheetDialog
-            val bottomSheet = bottomSheetDialog.findViewById<View>(R.id.design_bottom_sheet) as FrameLayout?
-            bottomSheet?.let {
-                val behavior = BottomSheetBehavior.from(it)
-                behavior.state = BottomSheetBehavior.STATE_EXPANDED
-                behavior.skipCollapsed = true
-            }
+        arguments?.let {
+            htmlContent = it.getString("htmlContent")
         }
-        return dialog
+        setStyle(STYLE_NO_FRAME, R.style.FullScreenDialog)
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = BannerHtmlDialogBinding.inflate(inflater, container, false)
@@ -48,17 +35,23 @@ class BannerHtmlDialog : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.backButton.setOnClickListener { dismiss() }
-        val url = arguments?.getString("url")
-        if (url != null) {
-            binding.webView.settings.javaScriptEnabled = true
-            binding.webView.webViewClient = WebViewClient()
-            binding.webView.loadUrl(url)
+        binding.tvHtmlContent.text = Html.fromHtml(htmlContent, Html.FROM_HTML_MODE_COMPACT)
+        binding.btnClose.setOnClickListener {
+            dismiss()
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        fun newInstance(htmlContent: String) =
+            BannerHtmlDialog().apply {
+                arguments = Bundle().apply {
+                    putString("htmlContent", htmlContent)
+                }
+            }
     }
 }

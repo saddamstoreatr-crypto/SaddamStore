@@ -3,10 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
 
     <application
         android:name=".App"
@@ -17,7 +18,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SaddamStore"
+        android:theme="@style/Theme.App.Starting"
         tools:targetApi="31">
 
         <activity
@@ -30,20 +31,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".main.MainActivity" android:exported="false" />
-        <activity android:name="com.sdstore.auth.AuthActivity" android:exported="false" />
-        <activity android:name="com.sdstore.auth.register.RegisterActivity" android:exported="false" />
-        <activity android:name=".blockemulator.BlockEmulatorActivity" android:exported="false" />
-        <activity android:name=".forceupdate.ForceUpdateActivity" android:exported="false" />
-        <activity android:name=".fcm.NextStopLockScreenActivity" android:exported="false" android:showOnLockScreen="true" />
+        <activity
+            android:name=".main.MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SaddamStore" />
 
-        <service
-            android:name=".fcm.MessagingService"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
+        <activity android:name=".forceupdate.ForceUpdateActivity" android:exported="false"/>
+        <activity android:name=".blockemulator.BlockEmulatorActivity" android:exported="false"/>
 
     </application>
+
 </manifest>

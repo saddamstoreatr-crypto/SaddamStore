@@ -2,56 +2,41 @@ package com.sdstore.cart.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.sdstore.R
-import com.sdstore.cart.databinding.ItemCartBinding
-import com.sdstore.core.models.Sku
-import com.sdstore.core.utils.UrlUtils
-import com.sdstore.orders.databinding.ItemCartBinding
-import java.text.NumberFormat
-import java.util.Locale
+import com.sdstore.core.models.CartItem
+import com.sdstore.feature_cart.R // Fix: R file ko import kiya gaya hai.
+import com.sdstore.feature_cart.databinding.ItemCartBinding
 
-class CartAdapter(
-    private val onQuantityChange: (sku: Sku, newQuantity: Int) -> Unit,
-    private val onRemoveItem: (sku: Sku) -> Unit
-) : ListAdapter<Sku, CartAdapter.CartViewHolder>(CartDiffCallback()) {
+interface CartItemListener {
+    fun onIncreaseQuantity(item: CartItem)
+    fun onDecreaseQuantity(item: CartItem)
+    fun onRemoveItem(item: CartItem)
+}
+
+class CartAdapter(private val listener: CartItemListener) :
+    ListAdapter<CartItem, CartAdapter.CartViewHolder>(CartDiffCallback()) {
 
     inner class CartViewHolder(private val binding: ItemCartBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(sku: Sku) {
-            binding.tvProductName.text = sku.name
+        fun bind(item: CartItem) {
+            binding.apply {
+                tvProductName.text = item.sku.name
+                // Fix: 'price' ab sku object se sahi tarah access hoga.
+                tvProductPrice.text = "Rs ${item.sku.price}"
+                tvQuantity.text = item.quantity.toString()
 
-            val format = NumberFormat.getCurrencyInstance(Locale("en", "PK"))
-            val priceString = format.format(sku.pricePaisas / 100.0)
-            binding.tvProductPrice.text = priceString
+                Glide.with(itemView.context)
+                    .load(item.sku.imageUrl)
+                    // Fix: 'drawable' ab R file se theek access hoga.
+                    .placeholder(R.drawable.ic_placeholder)
+                    .into(ivProductImage)
 
-            binding.tvQuantity.text = sku.quantity.toString()
-
-            val cdnUrl = UrlUtils.getCdnUrl(sku.imageUrl)
-            Glide.with(itemView.context)
-                .load(cdnUrl)
-                .placeholder(R.drawable.ic_placeholder)
-                .into(binding.ivProductImage)
-
-            binding.btnIncreaseQuantity.setOnClickListener {
-                if (sku.quantity < sku.stockQuantity) {
-                    onQuantityChange(sku, sku.quantity + 1)
-                } else {
-                    Toast.makeText(itemView.context, R.string.stock_limit_reached, Toast.LENGTH_SHORT).show()
-                }
-            }
-            binding.btnDecreaseQuantity.setOnClickListener {
-                if (sku.quantity > 1) {
-                    onQuantityChange(sku, sku.quantity - 1)
-                } else {
-                    onRemoveItem(sku)
-                }
-            }
-            binding.btnRemoveItem.setOnClickListener {
-                onRemoveItem(sku)
+                // Fix: Tamam buttons ab binding object se theek access honge.
+                btnIncrease.setOnClickListener { listener.onIncreaseQuantity(item) }
+                btnDecrease.setOnClickListener { listener.onDecreaseQuantity(item) }
+                btnRemove.setOnClickListener { listener.onRemoveItem(item) }
             }
         }
     }
@@ -64,14 +49,15 @@ class CartAdapter(
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
-}
 
-class CartDiffCallback : DiffUtil.ItemCallback<Sku>() {
-    override fun areItemsTheSame(oldItem: Sku, newItem: Sku): Boolean {
-        return oldItem.uniqueSkuId == newItem.uniqueSkuId
-    }
+    class CartDiffCallback : DiffUtil.ItemCallback<CartItem>() {
+        // Fix: 'id' ab sku object se sahi tarah access hoga.
+        override fun areItemsTheSame(oldItem: CartItem, newItem: CartItem): Boolean {
+            return oldItem.sku.id == newItem.sku.id
+        }
 
-    override fun areContentsTheSame(oldItem: Sku, newItem: Sku): Boolean {
-        return oldItem == newItem
+        override fun areContentsTheSame(oldItem: CartItem, newItem: CartItem): Boolean {
+            return oldItem == newItem
+        }
     }
 }

@@ -4,10 +4,12 @@
     <application>
         <activity
             android:name=".AuthActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.SaddamStore" />
         <activity
             android:name=".register.RegisterActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.SaddamStore" />
     </application>
 
 </manifest>

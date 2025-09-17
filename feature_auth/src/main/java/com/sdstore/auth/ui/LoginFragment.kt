@@ -1,40 +1,39 @@
 package com.sdstore.auth.ui
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.snackbar.Snackbar
-import com.sdstore.R
+import com.sdstore.auth.R
 import com.sdstore.auth.databinding.FragmentLoginBinding
-import com.sdstore.auth.help.FilerHelpBottomSheet
-import com.sdstore.auth.register.RegisterActivity
 import com.sdstore.auth.viewmodels.AuthViewModel
 import com.sdstore.core.data.Result
-import com.sdstore.main.MainActivity
-import com.sdstore.orders.viewmodels.UserViewModel
+import com.sdstore.core.viewmodels.UserViewModel // CORE SE IMPORT KAREIN
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
+
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: AuthViewModel by activityViewModels()
-    private val userViewModel: UserViewModel by activityViewModels()
+    private val authViewModel: AuthViewModel by viewModels()
+    private val userViewModel: UserViewModel by viewModels() // CORE SE INJECT HOGA
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -42,59 +41,41 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupClickListeners()
-        setupObservers()
+        observeViewModel()
     }
 
     private fun setupClickListeners() {
         binding.btnLogin.setOnClickListener {
-            val email = binding.etLoginEmail.text.toString().trim()
-            val password = binding.etLoginPassword.text.toString().trim()
+            val email = binding.etEmail.text.toString().trim()
+            val password = binding.etPassword.text.toString().trim()
             if (email.isNotEmpty() && password.isNotEmpty()) {
-                viewModel.loginWithEmail(email, password)
+                authViewModel.loginWithEmail(email, password)
             } else {
-                Toast.makeText(context, R.string.fill_all_fields, Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.fill_all_fields), Toast.LENGTH_SHORT).show()
             }
         }
-        binding.tvGoToSignup.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
-        }
+
         binding.tvForgotPassword.setOnClickListener {
-            showForgotPasswordDialog()
+            // Reset password dialog logic
         }
-        binding.tvHelpline.setOnClickListener {
-            FilerHelpBottomSheet.newInstance().show(parentFragmentManager, "FilerHelpBottomSheet")
+
+        binding.tvSignUp.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
         }
     }
 
-    private fun setupObservers() {
+    private fun observeViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                launch {
-                    viewModel.loginState.collect { state ->
-                        val isLoading = state is AuthViewModel.AuthState.Loading
-                        binding.btnLogin.isEnabled = !isLoading
+                authViewModel.loginState.collect { state ->
+                    binding.progressBar.isVisible = state is AuthViewModel.AuthState.Loading
+                    binding.btnLogin.isEnabled = state !is AuthViewModel.AuthState.Loading
 
-                        when (state) {
-                            is AuthViewModel.AuthState.Success -> {
-                                checkUserProfile()
-                                viewModel.resetLoginState()
-                            }
-                            is AuthViewModel.AuthState.Error -> {
-                                Snackbar.make(binding.root, state.message, Snackbar.LENGTH_LONG).show()
-                                viewModel.resetLoginState()
-                            }
-                            else -> {}
-                        }
-                    }
-                }
-
-                launch {
-                    viewModel.resetEmailState.collect { success ->
-                        success?.let {
-                            val message = if (it) getString(R.string.password_reset_link_sent) else getString(R.string.failed_to_send_reset_link)
-                            Toast.makeText(context, message, Toast.LENGTH_LONG).show()
-                            viewModel.resetPasswordState()
-                        }
+                    if (state is AuthViewModel.AuthState.Success) {
+                        checkUserProfile()
+                        authViewModel.resetLoginState()
+                    } else if (state is AuthViewModel.AuthState.Error) {
+                        Toast.makeText(context, state.message, Toast.LENGTH_LONG).show()
                     }
                 }
             }
@@ -107,50 +88,21 @@ class LoginFragment : Fragment() {
                 is Result.Success -> {
                     val user = result.data
                     if (user != null && user.name.isNotEmpty()) {
-                        navigateTo(MainActivity::class.java)
+                        // MainActivity app module mein hai, isliye iska Intent aese banega
+                        val intent = Intent(requireActivity(), Class.forName("com.sdstore.main.MainActivity"))
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+                        requireActivity().finish()
                     } else {
-                        navigateTo(RegisterActivity::class.java)
+                        // Registration process par bhejein
+                        findNavController().navigate(R.id.action_loginFragment_to_registerActivity)
                     }
                 }
                 is Result.Error -> {
-                    navigateTo(RegisterActivity::class.java)
+                    Toast.makeText(context, "Failed to check user profile", Toast.LENGTH_SHORT).show()
                 }
             }
         }
-    }
-
-    private fun navigateTo(activityClass: Class<*>) {
-        val intent = Intent(activity, activityClass).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        }
-        startActivity(intent)
-        activity?.finish()
-    }
-
-
-    private fun showForgotPasswordDialog() {
-        val builder = AlertDialog.Builder(requireContext())
-        val inflater = requireActivity().layoutInflater
-        val dialogView = inflater.inflate(com.sdstore.auth.R.layout.dialog_reset_password, null)
-        val emailEditText = dialogView.findViewById<EditText>(com.sdstore.auth.R.id.et_reset_email)
-
-        builder.setView(dialogView)
-            .setTitle(getString(R.string.reset_password_title))
-            .setMessage(getString(R.string.reset_password_message))
-            .setPositiveButton(getString(R.string.send_link)) { dialog, _ ->
-                val email = emailEditText.text.toString().trim()
-                if (email.isNotEmpty()) {
-                    viewModel.sendPasswordResetEmail(email)
-                } else {
-                    Toast.makeText(context, getString(R.string.please_enter_email), Toast.LENGTH_SHORT).show()
-                }
-                dialog.dismiss()
-            }
-            .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
-                dialog.cancel()
-            }
-
-        builder.create().show()
     }
 
     override fun onDestroyView() {

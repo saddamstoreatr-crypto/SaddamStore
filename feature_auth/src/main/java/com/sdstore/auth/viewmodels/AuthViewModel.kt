@@ -9,7 +9,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.sdstore.core.data.Result
-import com.sdstore.orders.data.UserRepository
+import com.sdstore.core.data.repository.UserRepository // THEEK KIYA GAYA
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -21,23 +21,24 @@ import javax.inject.Inject
 @HiltViewModel
 class AuthViewModel @Inject constructor(
     application: Application,
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository // THEEK KIYA GAYA
 ) : AndroidViewModel(application) {
 
     private val auth: FirebaseAuth = Firebase.auth
     private val db = Firebase.firestore
 
+    // --- Authentication States ---
     sealed class AuthState {
+        object Idle : AuthState()
+        object Loading : AuthState()
         object Success : AuthState()
         data class Error(val message: String) : AuthState()
-        object Loading : AuthState()
-        object Idle : AuthState()
     }
 
     sealed class OtpVerificationState {
+        object Loading : OtpVerificationState()
         data class Success(val isNewUser: Boolean) : OtpVerificationState()
         data class Error(val message: String) : OtpVerificationState()
-        object Loading : OtpVerificationState()
     }
 
     private val _loginState = MutableStateFlow<AuthState>(AuthState.Idle)
@@ -60,8 +61,8 @@ class AuthViewModel @Inject constructor(
                 if (result.user?.isEmailVerified == true) {
                     _loginState.value = AuthState.Success
                 } else {
-                    _loginState.value = AuthState.Error("Barah karam pehle apna email verify karein.")
                     auth.signOut()
+                    _loginState.value = AuthState.Error("Barah karam pehle apna email verify karein.")
                 }
             } catch (e: Exception) {
                 _loginState.value = AuthState.Error("Login nakaam hua. Email ya password ghalat hai.")
@@ -138,6 +139,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+    // --- State ko reset karne ke liye Functions ---
     fun resetLoginState() {
         _loginState.value = AuthState.Idle
     }

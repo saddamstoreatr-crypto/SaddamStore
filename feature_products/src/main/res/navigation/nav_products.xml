@@ -24,16 +24,13 @@
         android:label="CategoryProductsFragment"
         tools:layout="@layout/fragment_category_products">
         <argument
-            android:name="category_name"
+            android:name="categoryName"
             app:argType="string" />
-        <action
-            android:id="@+id/action_categoryProductsFragment_to_allPurchasedItemsFragment"
-            app:destination="@id/allPurchasedItemsFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/allPurchasedItemsFragment"
-        android:name="com.sdstore.products.viewmodels.AllPurchasedItemsFragment"
+        android:name="com.sdstore.products.ui.purchased.AllPurchasedItemsFragment"
         android:label="AllPurchasedItemsFragment"
         tools:layout="@layout/fragment_all_purchased_items" />
 

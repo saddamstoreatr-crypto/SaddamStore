@@ -19,8 +19,8 @@ import androidx.navigation.fragment.navArgs
 import com.sdstore.core.models.Order
 import com.sdstore.core.utils.InvoiceGenerator
 import com.sdstore.core.viewmodels.UiState
-import com.sdstore.orders.databinding.FragmentDeliveryDetailBinding
-import com.sdstore.utils.InvoiceGenerator
+import com.sdstore.feature_orders.R
+import com.sdstore.feature_orders.databinding.FragmentDeliveryDetailBinding
 import com.sdstore.orders.viewmodels.DeliveryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers

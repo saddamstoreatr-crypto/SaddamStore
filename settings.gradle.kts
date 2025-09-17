@@ -5,7 +5,6 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
-
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -18,6 +17,6 @@ rootProject.name = "SaddamStore"
 include(":app")
 include(":core")
 include(":feature_auth")
-include(":feature_products")
 include(":feature_cart")
 include(":feature_orders")
+include(":feature_products")

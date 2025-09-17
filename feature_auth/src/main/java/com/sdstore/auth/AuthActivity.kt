@@ -2,7 +2,7 @@ package com.sdstore.auth
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.sdstore.auth.databinding.ActivityAuthBinding
+import com.sdstore.feature_auth.databinding.ActivityAuthBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

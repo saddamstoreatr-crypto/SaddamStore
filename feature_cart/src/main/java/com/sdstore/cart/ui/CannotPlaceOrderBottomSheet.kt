@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.sdstore.cart.databinding.BottomSheetCannotPlaceOrderBinding
+import com.sdstore.feature_cart.databinding.BottomSheetCannotPlaceOrderBinding
 
 class CannotPlaceOrderBottomSheet : BottomSheetDialogFragment() {
 
@@ -13,7 +13,8 @@ class CannotPlaceOrderBottomSheet : BottomSheetDialogFragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = BottomSheetCannotPlaceOrderBinding.inflate(inflater, container, false)
@@ -23,8 +24,10 @@ class CannotPlaceOrderBottomSheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.okButton.setOnClickListener { dismiss() }
-        binding.backButton.setOnClickListener { dismiss() }
+        // Fix: Button ki ID 'buttonClose' hai, 'closeButton' nahi.
+        binding.buttonClose.setOnClickListener {
+            dismiss()
+        }
     }
 
     override fun onDestroyView() {

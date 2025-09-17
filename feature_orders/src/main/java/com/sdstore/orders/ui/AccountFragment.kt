@@ -13,13 +13,13 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.sdstore.auth.help.FilerHelpBottomSheet
 import com.sdstore.core.models.User
-import com.sdstore.orders.databinding.FragmentAccountBinding
-import com.sdstore.orders.viewmodels.UserViewModel
+import com.sdstore.core.viewmodels.UiState
+import com.sdstore.core.viewmodels.UserViewModel
+import com.sdstore.feature_orders.R
+import com.sdstore.feature_orders.databinding.FragmentAccountBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import perfetto.protos.UiState
 
 @AndroidEntryPoint
 class AccountFragment : Fragment() {
@@ -56,9 +56,6 @@ class AccountFragment : Fragment() {
         binding.feedbackButton.setOnClickListener {
             showFeedbackDialog()
         }
-        binding.helplineButton.setOnClickListener {
-            FilerHelpBottomSheet.newInstance().show(parentFragmentManager, "FilerHelpBottomSheet")
-        }
     }
 
     private fun setupObservers() {
@@ -67,50 +64,14 @@ class AccountFragment : Fragment() {
                 launch {
                     userViewModel.userState.collect { state ->
                         when (state) {
-                            is UserViewModel.UiState.Success -> {
+                            is UiState.Success -> {
                                 currentUser = state.data
                                 updateUi(state.data)
                             }
-                            is UserViewModel.UiState.Error -> {
+                            is UiState.Error -> {
                                 Toast.makeText(context, state.message, Toast.LENGTH_LONG).show()
                             }
                             else -> { /* Do nothing for Idle or Loading */ }
-                        }
-                    }
-                }
-
-                launch {
-                    userViewModel.profileUpdateStatus.collect { state ->
-                        if (state is UserViewModel.UiState.Success) {
-                            Toast.makeText(context, getString(R.string.profile_updated_successfully), Toast.LENGTH_SHORT).show()
-                            userViewModel.resetProfileUpdateStatus()
-                        } else if (state is UserViewModel.UiState.Error) {
-                            Toast.makeText(context, state.message, Toast.LENGTH_LONG).show()
-                            userViewModel.resetProfileUpdateStatus()
-                        }
-                    }
-                }
-
-                launch {
-                    userViewModel.feedbackStatus.collect { state ->
-                        if (state is UserViewModel.UiState.Success) {
-                            Toast.makeText(context, getString(R.string.feedback_submitted_successfully), Toast.LENGTH_SHORT).show()
-                            userViewModel.resetFeedbackStatus()
-                        } else if (state is UserViewModel.UiState.Error) {
-                            Toast.makeText(context, state.message, Toast.LENGTH_LONG).show()
-                            userViewModel.resetFeedbackStatus()
-                        }
-                    }
-                }
-
-                launch {
-                    userViewModel.loggedOutEvent.collect { hasLoggedOut ->
-                        if (hasLoggedOut) {
-                            val intent = Intent(activity, AuthActivity::class.java)
-                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                            startActivity(intent)
-                            activity?.finish()
-                            userViewModel.onLogoutEventHandled()
                         }
                     }
                 }
@@ -128,7 +89,7 @@ class AccountFragment : Fragment() {
         val builder = AlertDialog.Builder(requireContext())
         val inflater = requireActivity().layoutInflater
         val dialogView = inflater.inflate(R.layout.dialog_feedback, null)
-        val feedbackEditText = dialogView.wByIdfindVie<EditText>(R.id.et_feedback)
+        val feedbackEditText = dialogView.findViewById<EditText>(R.id.et_feedback)
 
         builder.setView(dialogView)
             .setTitle(getString(R.string.feedback_suggestion))

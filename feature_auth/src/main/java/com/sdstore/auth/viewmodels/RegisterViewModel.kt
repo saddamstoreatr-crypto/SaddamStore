@@ -1,14 +1,10 @@
 package com.sdstore.auth.viewmodels
 
 import android.app.Application
-import androidx.lifecycle.*
-import com.google.firebase.Firebase
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
-import com.sdstore.auth.data.RegisterRepository
-import com.sdstore.core.R
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
+import com.sdstore.core.data.repository.RegisterRepository
 import com.sdstore.core.data.Result
-import com.sdstore.core.viewmodels.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,62 +12,50 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-private const val USER_NAME_KEY = "userName"
-private const val OUTLET_NAME_KEY = "outletName"
-private const val USER_PHONE_KEY = "userPhone"
-private const val USER_LOCATION_KEY = "userLocation"
-
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
     private val application: Application,
-    private val repository: RegisterRepository,
-    private val savedStateHandle: SavedStateHandle
+    private val registerRepository: RegisterRepository
 ) : AndroidViewModel(application) {
 
-    val userName: StateFlow<String> = savedStateHandle.getStateFlow(USER_NAME_KEY, "")
-    val outletName: StateFlow<String> = savedStateHandle.getStateFlow(OUTLET_NAME_KEY, "")
-    val userPhone: StateFlow<String> = savedStateHandle.getStateFlow(USER_PHONE_KEY, "")
-    val location: StateFlow<String> = savedStateHandle.getStateFlow(USER_LOCATION_KEY, "")
-
-    private val _registrationState = MutableStateFlow<UiState<Unit>>(UiState.Idle)
-    val registrationState: StateFlow<UiState<Unit>> = _registrationState.asStateFlow()
-
-    fun saveUserName(name: String) {
-        savedStateHandle[USER_NAME_KEY] = name
+    sealed class RegistrationState {
+        object Idle : RegistrationState()
+        object Loading : RegistrationState()
+        object Success : RegistrationState()
+        data class Error(val message: String) : RegistrationState()
     }
 
-    fun saveOutletName(outlet: String) {
-        savedStateHandle[OUTLET_NAME_KEY] = outlet
-    }
+    private val _registrationState = MutableStateFlow<RegistrationState>(RegistrationState.Idle)
+    val registrationState: StateFlow<RegistrationState> = _registrationState.asStateFlow()
 
-    fun saveUserPhone(phone: String) {
-        savedStateHandle[USER_PHONE_KEY] = phone
-    }
+    // Data held across registration screens
+    var userName: String? = null
+    var outletName: String? = null
+    var location: String? = null
+    var userPhone: String? = null
 
-    fun saveLocation(loc: String) {
-        savedStateHandle[USER_LOCATION_KEY] = loc
-    }
-
-    fun saveRegistrationData() {
-        _registrationState.value = UiState.Loading
-        viewModelScope.launch {
-            val name = userName.value
-            val outlet = outletName.value
-            val loc = location.value
-            val phone = userPhone.value.ifEmpty { Firebase.auth.currentUser?.phoneNumber ?: "" }
-
-            if (name.isNotEmpty() && loc.isNotEmpty() && phone.isNotEmpty()) {
-                when (repository.registerUser(name, outlet, loc, phone)) {
-                    is Result.Success -> _registrationState.value = UiState.Success(Unit)
-                    is Result.Error -> _registrationState.value = UiState.Error(application.getString(R.string.registration_failed))
+    fun registerUser() {
+        if (userName != null && outletName != null && location != null && userPhone != null) {
+            _registrationState.value = RegistrationState.Loading
+            viewModelScope.launch {
+                val result = registerRepository.registerUser(
+                    name = userName!!,
+                    outletName = outletName!!,
+                    location = location!!,
+                    phone = userPhone!!
+                )
+                when (result) {
+                    is Result.Success -> _registrationState.value = RegistrationState.Success
+                    is Result.Error -> _registrationState.value =
+                        RegistrationState.Error(result.exception.message ?: "Registration failed")
                 }
-            } else {
-                _registrationState.value = UiState.Error(application.getString(R.string.registration_data_missing))
             }
+        } else {
+            _registrationState.value = RegistrationState.Error("User details are incomplete.")
         }
     }
 
-    fun resetRegistrationState() {
-        _registrationState.value = UiState.Idle
+    fun resetState() {
+        _registrationState.value = RegistrationState.Idle
     }
 }
