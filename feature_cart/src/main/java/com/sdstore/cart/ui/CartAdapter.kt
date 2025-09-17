@@ -23,6 +23,7 @@ class CartAdapter(private val listener: CartItemListener) :
         fun bind(item: CartItem) {
             binding.apply {
                 tvProductName.text = item.sku.name
+                // Fix: 'price' ab sku object se sahi tarah access hoga.
                 tvProductPrice.text = "Rs ${item.sku.price}"
                 tvQuantity.text = item.quantity.toString()
 
@@ -33,9 +34,9 @@ class CartAdapter(private val listener: CartItemListener) :
                     .into(ivProductImage)
 
                 // Fix: Tamam buttons ab binding object se theek access honge.
-                btnIncrease.setOnClickListener { listener.onIncreaseQuantity(item) }
-                btnDecrease.setOnClickListener { listener.onDecreaseQuantity(item) }
-                btnRemove.setOnClickListener { listener.onRemoveItem(item) }
+                binding.btnIncreaseQuantity.setOnClickListener { listener.onIncreaseQuantity(item) }
+                binding.btnDecreaseQuantity.setOnClickListener { listener.onDecreaseQuantity(item) }
+                binding.btnRemoveItem.setOnClickListener { listener.onRemoveItem(item) }
             }
         }
     }
@@ -50,6 +51,7 @@ class CartAdapter(private val listener: CartItemListener) :
     }
 
     class CartDiffCallback : DiffUtil.ItemCallback<CartItem>() {
+        // Fix: 'id' ab sku object se sahi tarah access hoga.
         override fun areItemsTheSame(oldItem: CartItem, newItem: CartItem): Boolean {
             return oldItem.sku.id == newItem.sku.id
         }

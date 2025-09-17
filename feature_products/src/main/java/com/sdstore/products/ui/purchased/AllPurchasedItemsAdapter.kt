@@ -36,10 +36,10 @@ class AllPurchasedItemsAdapter(
             binding.btnAddToCart.setOnClickListener {
                 onAddToCartClick(getItem(adapterPosition))
             }
-            binding.btnIncrease.setOnClickListener {
+            binding.btnIncreaseQuantity.setOnClickListener {
                 onIncreaseClick(getItem(adapterPosition))
             }
-            binding.btnDecrease.setOnClickListener {
+            binding.btnDecreaseQuantity.setOnClickListener {
                 onDecreaseClick(getItem(adapterPosition))
             }
         }

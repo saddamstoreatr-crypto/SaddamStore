@@ -32,6 +32,10 @@ android {
 }
 
 dependencies {
+
+    implementation(libs.glide)
+
+    implementation(project(":app"))
     implementation(project(":core"))
 
     // Fragment KTX
@@ -40,4 +44,9 @@ dependencies {
     // Hilt for DI
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+
+    // ✅ YEH DEPENDENCIES KSP ERROR THEEK KARENGI
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
 }

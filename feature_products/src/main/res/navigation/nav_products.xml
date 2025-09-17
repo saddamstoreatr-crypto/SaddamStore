@@ -24,7 +24,7 @@
         android:label="CategoryProductsFragment"
         tools:layout="@layout/fragment_category_products">
         <argument
-            android:name="categoryName"
+            android:name="categoryId"
             app:argType="string" />
     </fragment>
 

@@ -65,6 +65,7 @@ class HomePageAdapter(
             is HomePageItem.Categories -> (holder as CategoriesViewHolder).bind(item.categories)
             is HomePageItem.RegularItems -> (holder as RegularItemsViewHolder).bind(item)
             is HomePageItem.Title -> (holder as TitleViewHolder).bind(item)
+            is HomePageItem.Loading -> { /* No data to bind for loading state */ }
         }
     }
 

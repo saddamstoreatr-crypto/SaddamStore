@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.firestore.DocumentSnapshot
 import com.sdstore.core.data.Result
 import com.sdstore.core.data.repository.DeliveryRepository
+import com.sdstore.core.di.AdminDeliveryRepository
 import com.sdstore.core.models.Order
 import com.sdstore.core.viewmodels.UiState
 import com.sdstore.feature_orders.R
@@ -19,7 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class DeliveryViewModel @Inject constructor(
     application: Application,
-    private val repository: DeliveryRepository
+    @AdminDeliveryRepository private val repository: DeliveryRepository
 ) : AndroidViewModel(application) {
 
     private val _ordersState = MutableStateFlow<UiState<List<Order>>>(UiState.Loading)

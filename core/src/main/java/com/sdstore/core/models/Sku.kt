@@ -1,8 +1,10 @@
 package com.sdstore.core.models
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.firebase.firestore.IgnoreExtraProperties
+import kotlinx.parcelize.Parcelize
 
 /**
  * Yeh data class ek product (SKU) ko represent karti hai.
@@ -11,6 +13,7 @@ import com.google.firebase.firestore.IgnoreExtraProperties
  * @param id Har product ka unique identifier.
  */
 // Fix: @Entity annotation add ki gayi hai. Is se Room ko pata chalega ke 'products' naam ka table banana hai.
+@Parcelize
 @Entity(tableName = "products")
 @IgnoreExtraProperties
 data class Sku(
@@ -23,4 +26,4 @@ data class Sku(
     val categoryId: String = "",
     val stock: Int = 0,
     val description: String = ""
-)
+) : Parcelable

@@ -25,7 +25,7 @@ class ItemDetailDialog : DialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            sku = it.getParcelable("sku")
+            sku = it.getParcelable("sku", Sku::class.java)
         }
         setStyle(STYLE_NO_FRAME, R.style.FullScreenDialog)
     }
@@ -43,12 +43,12 @@ class ItemDetailDialog : DialogFragment() {
         sku?.let {
             Glide.with(this)
                 .load(it.imageUrl)
-                .into(binding.ivProductImage)
-            binding.tvProductName.text = it.name
-            binding.tvProductDescription.text = it.description
-            binding.tvProductPrice.text = "Rs. ${it.price}"
-            binding.tvUnitInfo.text = it.unitInfo
-            binding.btnAddToCart.setOnClickListener { _ ->
+                .into(binding.skuImageView)
+            binding.skuNameTextView.text = it.name
+            binding.productDescriptionTextView.text = it.description
+            binding.productPriceTextView.text = "Rs. ${it.price}"
+            binding.unitInfoTextView.text = it.unitInfo
+            binding.addToCartButton.setOnClickListener { _ ->
                 cartViewModel.addToCart(it)
                 // You can show a toast or something here
             }
