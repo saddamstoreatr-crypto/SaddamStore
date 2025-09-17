@@ -10,7 +10,6 @@ import com.sdstore.core.models.Order
 import com.sdstore.core.models.OrderItem
 import com.sdstore.core.networking.ApiService
 import kotlinx.coroutines.tasks.await
-import java.lang.Exception
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -30,7 +29,7 @@ class DeliveryRepository @Inject constructor(
             val snapshot = firestore.collection("users")
                 .document(currentUser!!.uid)
                 .collection("deliveries")
-                .orderBy("deliveryTime", Query.Direction.DESCENDING)
+                .orderBy("date", Query.Direction.DESCENDING)
                 .get()
                 .await()
             val deliveries = snapshot.toObjects(Delivery::class.java)
@@ -61,22 +60,23 @@ class DeliveryRepository @Inject constructor(
                 }
             }
 
-            // Fix Start: CartItems ko OrderItems mein sahi tareeqe se tabdeel karein
             val orderItems = cartItems.map { cartItem ->
                 OrderItem(
                     uniqueSkuId = cartItem.sku.id,
-                    name = cartItem.sku.name, // Fix: 'title' ke bajaye 'name' istemal kiya
-                    imageUrl = cartItem.sku.imageUrl,
-                    quantity = cartItem.quantity,
-                    pricePaisas = cartItem.sku.price
+                    name = cartItem.sku.name,
+                    imageUrl = cartItem.sku.imageUrl ?: "",
+                    quantity = cartItem.quantity.toLong(),
+                    pricePaisas = cartItem.sku.price.toLong()
                 )
             }
-            // Fix End
+
+            val totalPrice = orderItems.sumOf { it.pricePaisas * it.quantity }
 
             // Order banayein
             val order = Order(
+                userId = currentUser!!.uid,
                 items = orderItems,
-                // ... yahan order ki baqi properties aayengi
+                totalPrice = totalPrice,
             )
 
             val orderRef = firestore.collection("orders").add(order).await()
