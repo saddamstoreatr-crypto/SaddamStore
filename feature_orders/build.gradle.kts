@@ -48,4 +48,7 @@ dependencies {
     // ✅ YEH DEPENDENCIES KSP ERROR THEEK KARENGI
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.firestore)
+
+// Glide
+implementation(libs.glide)
 }

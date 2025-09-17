@@ -1,7 +1,6 @@
 package com.sdstore.main.bannerhtml
 
 import android.os.Bundle
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +20,7 @@ class BannerHtmlDialog : DialogFragment() {
         arguments?.let {
             htmlContent = it.getString("htmlContent")
         }
-        setStyle(STYLE_NO_FRAME, R.style.FullScreenDialog)
+        setStyle(STYLE_NO_FRAME, R.style.Theme_SaddamStore)
     }
 
     override fun onCreateView(
@@ -35,8 +34,10 @@ class BannerHtmlDialog : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvHtmlContent.text = Html.fromHtml(htmlContent, Html.FROM_HTML_MODE_COMPACT)
-        binding.btnClose.setOnClickListener {
+        htmlContent?.let {
+            binding.webView.loadData(it, "text/html", "UTF-8")
+        }
+        binding.backButton.setOnClickListener {
             dismiss()
         }
     }

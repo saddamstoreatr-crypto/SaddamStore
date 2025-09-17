@@ -16,4 +16,9 @@ interface ProductRepository {
         subCategory: String,
         category: String
     ): Flow<List<Sku>>
+
+    suspend fun getRegularItems(): Flow<List<Sku>>
+    suspend fun getProductsByCategory(categoryId: String): Flow<List<Sku>>
+    suspend fun searchProducts(query: String): Flow<List<Sku>>
+    suspend fun getAllPurchasedItems(): Flow<List<Sku>>
 }
