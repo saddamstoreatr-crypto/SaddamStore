@@ -33,6 +33,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":app"))
     implementation(project(":core"))
 
     // Hilt for DI
