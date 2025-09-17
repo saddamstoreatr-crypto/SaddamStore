@@ -35,7 +35,7 @@ dependencies {
 
     implementation(libs.glide)
 
-    implementation(project(":app"))
+
     implementation(project(":core"))
 
     // Fragment KTX
