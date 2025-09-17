@@ -52,10 +52,6 @@ android {
 
 dependencies {
     implementation(project(":core"))
-    implementation(project(":feature_auth"))
-    implementation(project(":feature_products"))
-    implementation(project(":feature_cart"))
-    implementation(project(":feature_orders"))
 
     // AndroidX & UI
     implementation(libs.androidx.core.ktx)

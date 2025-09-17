@@ -33,15 +33,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":core"))
-
-    // Navigation and Fragment KTX
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
-    implementation(libs.androidx.fragment.ktx)
+    implementation(project(":app"))
 
     // Hilt for DI
-    implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 
     // Lottie for Animations
@@ -49,5 +43,4 @@ dependencies {
 
     // Play Services for Location
     implementation(libs.play.services.location)
-
 }

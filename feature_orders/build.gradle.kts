@@ -32,12 +32,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":core"))
-
-    // Fragment KTX
-    implementation(libs.androidx.fragment.ktx)
+    implementation(project(":app"))
 
     // Hilt for DI
-    implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 }

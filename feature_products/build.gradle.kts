@@ -33,21 +33,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":core"))
-
-    // Navigation and Fragment KTX
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
-    implementation(libs.androidx.fragment.ktx)
+    implementation(project(":app"))
 
     // Hilt for DI
-    implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
-
-    // ✅ YEH DEPENDENCIES KSP ERROR THEEK KARENGI
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.firestore)
-
-    // Glide
-    implementation(libs.glide)
 }
