@@ -1,9 +1,9 @@
-package com.sdstore.auth.di
+package com.sdstore.feature_auth.di
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import com.sdstore.auth.data.RegisterRepositoryImpl
+import com.sdstore.feature_auth.data.RegisterRepositoryImpl
 import com.sdstore.core.data.repository.RegisterRepository
 import dagger.Module
 import dagger.Provides

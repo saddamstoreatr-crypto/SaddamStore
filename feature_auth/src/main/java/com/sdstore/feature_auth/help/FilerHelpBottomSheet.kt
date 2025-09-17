@@ -1,4 +1,4 @@
-package com.sdstore.auth.help
+package com.sdstore.feature_auth.help
 
 import android.content.Intent
 import android.content.pm.PackageManager

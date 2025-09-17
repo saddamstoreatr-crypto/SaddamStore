@@ -1,4 +1,4 @@
-package com.sdstore.auth.register
+package com.sdstore.feature_auth.register
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,9 +10,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.sdstore.R
 import com.sdstore.feature_auth.R
 import com.sdstore.feature_auth.databinding.FragmentEnterUserPhoneBinding
-import com.sdstore.auth.viewmodels.RegisterViewModel
+import com.sdstore.feature_auth.viewmodels.RegisterViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -51,7 +52,7 @@ class EnterUserPhoneFragment : Fragment() {
                 viewModel.saveUserPhone(phoneNumber)
                 findNavController().navigate(R.id.action_enterUserPhoneFragment_to_outletLocationFragment)
             } else {
-                Toast.makeText(context, getString(com.sdstore.R.string.please_enter_phone_number), Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, getString(R.string.please_enter_phone_number), Toast.LENGTH_SHORT).show()
             }
         }
     }

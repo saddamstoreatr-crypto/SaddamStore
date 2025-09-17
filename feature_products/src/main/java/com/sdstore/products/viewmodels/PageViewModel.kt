@@ -51,7 +51,7 @@ class PageViewModel @Inject constructor(
     fun getProductsByCategory(categoryId: String) {
         viewModelScope.launch {
             try {
-                _products.value = productRepository.getProductsByCategory(categoryId)
+                _products.value = productRepository.getProductsByCategory(categoryId) as List<Sku>?
             } catch (e: Exception) {
                 // Handle error
             }

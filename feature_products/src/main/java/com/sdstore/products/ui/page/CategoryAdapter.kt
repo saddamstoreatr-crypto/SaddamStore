@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.sdstore.core.R
 import com.sdstore.core.models.Category
 import com.sdstore.feature_products.databinding.ItemCategoryBinding
 

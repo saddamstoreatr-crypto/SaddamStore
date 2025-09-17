@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/startFragment"
-        android:name="com.sdstore.auth.ui.StartFragment"
+        android:name="com.sdstore.feature_auth.ui.StartFragment"
         tools:layout="@layout/fragment_start">
         <action
             android:id="@+id/action_startFragment_to_enterPhoneFragment"
@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/enterPhoneFragment"
-        android:name="com.sdstore.auth.ui.EnterPhoneFragment"
+        android:name="com.sdstore.feature_auth.ui.EnterPhoneFragment"
         tools:layout="@layout/fragment_enter_phone">
         <action
             android:id="@+id/action_enterPhoneFragment_to_enterOtpFragment"
@@ -28,7 +28,7 @@
 
     <fragment
         android:id="@+id/enterOtpFragment"
-        android:name="com.sdstore.auth.ui.EnterOtpFragment"
+        android:name="com.sdstore.feature_auth.ui.EnterOtpFragment"
         tools:layout="@layout/fragment_enter_otp">
         <argument
             android:name="phoneNumber"
@@ -43,7 +43,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.sdstore.auth.ui.LoginFragment"
+        android:name="com.sdstore.feature_auth.ui.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login">
         <action
@@ -53,7 +53,7 @@
 
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.sdstore.auth.ui.SignUpFragment"
+        android:name="com.sdstore.feature_auth.ui.SignUpFragment"
         android:label="SignUpFragment"
         tools:layout="@layout/fragment_signup">
         <action
@@ -65,7 +65,7 @@
 
     <fragment
         android:id="@+id/verifyEmailFragment"
-        android:name="com.sdstore.auth.ui.VerifyEmailFragment"
+        android:name="com.sdstore.feature_auth.ui.VerifyEmailFragment"
         android:label="VerifyEmailFragment"
         tools:layout="@layout/fragment_verify_email">
         <action

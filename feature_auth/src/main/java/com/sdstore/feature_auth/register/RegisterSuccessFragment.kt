@@ -1,4 +1,4 @@
-package com.sdstore.auth.register
+package com.sdstore.feature_auth.register
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,8 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.sdstore.R
-import com.sdstore.auth.viewmodels.RegisterViewModel
+import com.sdstore.feature_auth.R
+import com.sdstore.feature_auth.viewmodels.RegisterViewModel
 import com.sdstore.feature_auth.databinding.FragmentRegisterSuccessBinding
 import com.sdstore.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint

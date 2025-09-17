@@ -1,4 +1,4 @@
-package com.sdstore.auth.ui
+package com.sdstore.feature_auth.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater

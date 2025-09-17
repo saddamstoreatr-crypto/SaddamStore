@@ -1,4 +1,4 @@
-package com.sdstore.auth.ui
+package com.sdstore.feature_auth.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,9 +15,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.sdstore.feature_auth.R
 import com.sdstore.feature_auth.databinding.FragmentLoginBinding
-import com.sdstore.auth.viewmodels.AuthViewModel
+import com.sdstore.feature_auth.viewmodels.AuthViewModel
 import com.sdstore.core.data.Result
-import com.sdstore.core.viewmodels.UserViewModel // CORE SE IMPORT KAREIN
+import com.sdstore.core.viewmodels.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -28,7 +28,7 @@ class LoginFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val authViewModel: AuthViewModel by viewModels()
-    private val userViewModel: UserViewModel by viewModels() // CORE SE INJECT HOGA
+    private val userViewModel: UserViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,12 +46,12 @@ class LoginFragment : Fragment() {
 
     private fun setupClickListeners() {
         binding.btnLogin.setOnClickListener {
-            val email = binding.etEmail.text.toString().trim()
-            val password = binding.etPassword.text.toString().trim()
+            val email = binding.etLoginEmail.text.toString().trim()
+            val password = binding.etLoginPassword.text.toString().trim()
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 authViewModel.loginWithEmail(email, password)
             } else {
-                Toast.makeText(requireContext(), getString(com.sdstore.R.string.fill_all_fields), Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.fill_all_fields), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -59,7 +59,7 @@ class LoginFragment : Fragment() {
             // Reset password dialog logic
         }
 
-        binding.tvSignUp.setOnClickListener {
+        binding.tvGoToSignup.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
         }
     }
@@ -100,7 +100,7 @@ class LoginFragment : Fragment() {
                         requireActivity().finish()
                     } else {
                         // Registration process par bhejein
-                        val intent = Intent(requireActivity(), Class.forName("com.sdstore.auth.register.RegisterActivity"))
+                        val intent = Intent(requireActivity(), Class.forName("com.sdstore.feature_auth.register.RegisterActivity"))
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
                         requireActivity().finish()

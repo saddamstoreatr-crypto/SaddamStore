@@ -58,4 +58,14 @@ class CartRepositoryImpl @Inject constructor(
         if (currentUser == null) return Result.Error(Exception("Order place karne ke liye login zaroori hai."))
         return Result.Success(Unit) // Placeholder
     }
+
+    override suspend fun addItem(item: CartItem): Result<Unit> {
+        if (currentUser == null) return Result.Error(Exception("User not logged in."))
+        return try {
+            getCartCollection().document(item.sku.id).set(item).await()
+            Result.Success(Unit)
+        } catch (e: Exception) {
+            Result.Error(e)
+        }
+    }
 }

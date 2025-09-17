@@ -27,4 +27,9 @@ interface CartRepository {
      * Cart se ek item remove (delete) karta hai.
      */
     suspend fun removeItem(item: CartItem): Result<Unit>
+
+    /**
+     * Cart mein ek naya item add karta hai.
+     */
+    suspend fun addItem(item: CartItem): Result<Unit>
 }

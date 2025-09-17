@@ -1,4 +1,4 @@
-package com.sdstore.auth.viewmodels
+package com.sdstore.feature_auth.viewmodels
 
 import android.app.Application
 import android.net.Uri

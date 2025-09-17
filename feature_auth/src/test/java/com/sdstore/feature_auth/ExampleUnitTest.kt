@@ -1,4 +1,4 @@
-package com.sdstore.auth
+package com.sdstore.feature_auth
 
 import org.junit.Test
 

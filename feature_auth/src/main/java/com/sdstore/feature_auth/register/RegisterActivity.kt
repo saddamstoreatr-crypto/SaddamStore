@@ -1,4 +1,4 @@
-package com.sdstore.auth.register
+package com.sdstore.feature_auth.register
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

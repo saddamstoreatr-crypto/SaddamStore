@@ -6,11 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sdstore.cart.viewmodels.CartViewModel
+import com.sdstore.core.viewmodels.UiState
 import com.sdstore.feature_products.databinding.FragmentAllPurchasedItemsBinding
 import com.sdstore.products.viewmodels.AllPurchasedItemsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class AllPurchasedItemsFragment : Fragment() {
@@ -67,6 +70,9 @@ class AllPurchasedItemsFragment : Fragment() {
                     }
                     is UiState.Error -> {
                         // Show error message
+                    }
+                    is UiState.Idle -> {
+                        // Do nothing
                     }
                 }
             }

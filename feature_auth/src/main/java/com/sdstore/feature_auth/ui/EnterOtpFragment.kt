@@ -1,4 +1,4 @@
-package com.sdstore.auth.ui
+package com.sdstore.feature_auth.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -22,9 +22,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
-import com.sdstore.R
-import com.sdstore.auth.register.RegisterActivity
-import com.sdstore.auth.viewmodels.AuthViewModel
+import com.sdstore.feature_auth.R
+import com.sdstore.feature_auth.register.RegisterActivity
+import com.sdstore.feature_auth.viewmodels.AuthViewModel
 import com.sdstore.feature_auth.databinding.FragmentEnterOtpBinding
 import com.sdstore.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -189,7 +189,7 @@ class EnterOtpFragment : Fragment() {
         val otp = "${binding.otp1.text}${binding.otp2.text}${binding.otp3.text}${binding.otp4.text}${binding.otp5.text}${binding.otp6.text}"
         if (otp.length == 6) {
             val credential = PhoneAuthProvider.getCredential(currentVerificationId, otp)
-            signInWithPhoneAuthCredential(credential)
+            signInWithPhoneAuthCredential(.credential)
         }
     }
 

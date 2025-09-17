@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/userNameFragment"
-        android:name="com.sdstore.auth.register.UserNameFragment"
+        android:name="com.sdstore.feature_auth.register.UserNameFragment"
         android:label="UserNameFragment"
         tools:layout="@layout/fragment_user_name">
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/outletNameFragment"
-        android:name="com.sdstore.auth.register.OutletNameFragment"
+        android:name="com.sdstore.feature_auth.register.OutletNameFragment"
         android:label="OutletNameFragment"
         tools:layout="@layout/fragment_outlet_name">
         <action
@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/enterUserPhoneFragment"
-        android:name="com.sdstore.auth.register.EnterUserPhoneFragment"
+        android:name="com.sdstore.feature_auth.register.EnterUserPhoneFragment"
         android:label="EnterUserPhoneFragment"
         tools:layout="@layout/fragment_enter_user_phone">
         <action
@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/outletLocationFragment"
-        android:name="com.sdstore.auth.register.OutletLocationFragment"
+        android:name="com.sdstore.feature_auth.register.OutletLocationFragment"
         android:label="OutletLocationFragment"
         tools:layout="@layout/fragment_outlet_location">
         <action
@@ -47,7 +47,7 @@
 
     <fragment
         android:id="@+id/registerSuccessFragment"
-        android:name="com.sdstore.auth.register.RegisterSuccessFragment"
+        android:name="com.sdstore.feature_auth.feature_auth.register.RegisterSuccessFragment"
         android:label="RegisterSuccessFragment"
         tools:layout="@layout/fragment_register_success" />
 

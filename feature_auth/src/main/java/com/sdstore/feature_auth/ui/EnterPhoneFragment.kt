@@ -1,4 +1,4 @@
-package com.sdstore.auth.ui
+package com.sdstore.feature_auth.ui
 
 import android.os.Bundle
 import android.text.Editable
@@ -14,9 +14,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
-import com.sdstore.R
+import com.sdstore.feature_auth.R
 import com.sdstore.feature_auth.databinding.FragmentEnterPhoneBinding
-import com.sdstore.auth.help.FilerHelpBottomSheet
+import com.sdstore.feature_auth.help.FilerHelpBottomSheet
 import java.util.concurrent.TimeUnit
 
 class EnterPhoneFragment : Fragment() {
