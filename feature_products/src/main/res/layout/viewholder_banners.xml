@@ -13,6 +13,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/cd_banners_view_pager"
         />
 
     <com.google.android.material.tabs.TabLayout
@@ -26,7 +27,7 @@
         app:tabRippleColor="@null"
         app:tabPaddingStart="6dp"
         app:tabPaddingEnd="6dp"
-        app:layout_constraintBottom_toBottomOf="@id/view_pager_banners"
+        app:layout_constraintBottom_toBottomOf="@id/bannerViewPager"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

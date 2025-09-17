@@ -100,7 +100,10 @@ class LoginFragment : Fragment() {
                         requireActivity().finish()
                     } else {
                         // Registration process par bhejein
-                        findNavController().navigate(R.id.action_loginFragment_to_registerActivity)
+                        val intent = Intent(requireActivity(), Class.forName("com.sdstore.auth.register.RegisterActivity"))
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+                        requireActivity().finish()
                     }
                 }
                 is Result.Error -> {

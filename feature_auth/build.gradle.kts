@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.sdstore.feature_auth"
+    namespace = "com.sdstore.auth"
     compileSdk = 34
 
     defaultConfig {

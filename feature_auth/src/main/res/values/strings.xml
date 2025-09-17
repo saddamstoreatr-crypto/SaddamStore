@@ -1,0 +1,5 @@
+<resources>
+    <string name="location_service_off_title">Location Service Disabled</string>
+    <string name="location_service_off_message">To register your outlet location, please enable location services in your device settings.</string>
+    <string name="turn_on">Turn On</string>
+</resources>

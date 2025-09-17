@@ -55,7 +55,7 @@
         tools:text="This is a detailed product description." />
 
     <TextView
-        android:id="@+id/unitInfo"
+        android:id="@+id/unitInfoTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -84,7 +84,7 @@
         android:text="@string/add_to_cart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/skuNameTextView" />
+        app:layout_constraintTop_toBottomOf="@id/productDescriptionTextView" />
 
     <Button
         android:id="@+id/notifyMeButton"
@@ -97,6 +97,6 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/skuNameTextView" />
+        app:layout_constraintTop_toBottomOf="@id/productDescriptionTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
