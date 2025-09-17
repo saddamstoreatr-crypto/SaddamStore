@@ -108,6 +108,9 @@ class LoginFragment : Fragment() {
                 is Result.Error -> {
                     Toast.makeText(context, "Failed to check user profile", Toast.LENGTH_SHORT).show()
                 }
+                is Result.Loading -> {
+                    // You can show a loading indicator here if you have one for this specific action
+                }
             }
         }
     }

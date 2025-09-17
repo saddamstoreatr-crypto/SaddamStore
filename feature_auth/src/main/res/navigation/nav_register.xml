@@ -47,7 +47,7 @@
 
     <fragment
         android:id="@+id/registerSuccessFragment"
-        android:name="com.sdstore.feature_auth.feature_auth.register.RegisterSuccessFragment"
+        android:name="com.sdstore.feature_auth.register.RegisterSuccessFragment"
         android:label="RegisterSuccessFragment"
         tools:layout="@layout/fragment_register_success" />
 
