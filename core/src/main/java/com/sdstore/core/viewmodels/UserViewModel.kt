@@ -44,6 +44,7 @@ class UserViewModel @Inject constructor(
         _userState.value = UiState.Loading
         viewModelScope.launch {
             when (val result = userRepository.getUser()) {
+                is Result.Loading -> {}
                 is Result.Success -> {
                     val user = result.data
                     if (user != null) {
@@ -65,6 +66,7 @@ class UserViewModel @Inject constructor(
         _profileUpdateStatus.value = UiState.Loading
         viewModelScope.launch {
             when (userRepository.updateUserProfile(name, outletName)) {
+                is Result.Loading -> {}
                 is Result.Success -> {
                     _profileUpdateStatus.value = UiState.Success(Unit)
                     fetchUser()
@@ -80,6 +82,7 @@ class UserViewModel @Inject constructor(
         _feedbackStatus.value = UiState.Loading
         viewModelScope.launch {
             when(feedbackRepository.submitFeedback(feedbackText)){
+                is Result.Loading -> {}
                 is Result.Success -> _feedbackStatus.value = UiState.Success(Unit)
                 is Result.Error -> _feedbackStatus.value = UiState.Error(application.getString(R.string.feedback_submit_failed))
             }
