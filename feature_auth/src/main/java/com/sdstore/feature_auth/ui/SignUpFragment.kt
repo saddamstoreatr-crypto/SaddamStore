@@ -62,7 +62,7 @@ class SignUpFragment : Fragment() {
                     when (state) {
                         is AuthViewModel.AuthState.Success -> {
                             Toast.makeText(context, getString(R.string.account_created_verify_email), Toast.LENGTH_LONG).show()
-                            findNavController().navigate(R.id.action_signUpFragment_to_verifyEmailFragment)
+                            findNavController().navigate(com.sdstore.R.id.action_signUpFragment_to_verifyEmailFragment)
                             authViewModel.resetSignUpState()
                         }
                         is AuthViewModel.AuthState.Error -> {

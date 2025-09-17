@@ -6,13 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.sdstore.cart.viewmodels.CartViewModel
 import com.sdstore.feature_products.databinding.FragmentCategoryProductsBinding
 import com.sdstore.products.ui.page.ProductAdapter
 import com.sdstore.products.viewmodels.PageViewModel
+import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -57,14 +57,14 @@ class CategoryProductsFragment : Fragment() {
                 cartViewModel.decreaseQuantity(sku)
             }
         )
-        binding.rvCategoryProducts.layoutManager = GridLayoutManager(context, 2)
-        binding.rvCategoryProducts.adapter = adapter
+        binding.rvProducts.layoutManager = GridLayoutManager(context, 2)
+        binding.rvProducts.adapter = adapter
     }
 
     private fun observeViewModel() {
         viewModel.products.observe(viewLifecycleOwner) { products ->
             binding.tvEmptyCategory.isVisible = products.isNullOrEmpty()
-            binding.rvCategoryProducts.isVisible = !products.isNullOrEmpty()
+            binding.rvProducts.isVisible = !products.isNullOrEmpty()
             adapter.submitList(products)
         }
     }

@@ -25,5 +25,6 @@ data class Sku(
     val imageUrl: String? = null,
     val categoryId: String = "",
     val stock: Int = 0,
-    val description: String = ""
+    val description: String = "",
+    val unitInfo: String = ""
 ) : Parcelable

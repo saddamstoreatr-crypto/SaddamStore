@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sdstore.cart.viewmodels.CartViewModel
 import com.sdstore.feature_products.databinding.FragmentPageBinding
 import com.sdstore.products.viewmodels.PageViewModel
+import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,23 +38,23 @@ class PageFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        homePageAdapter = HomePageAdapter(
-            onBannerClick = { /* Handle banner click */ },
-            onCategoryClick = { /* Handle category click */ },
-            onProductClick = { /* Handle product click */ },
-            onAddToCartClick = { sku -> cartViewModel.addToCart(sku) },
-            onIncreaseClick = { sku -> cartViewModel.increaseQuantity(sku.id) },
-            onDecreaseClick = { sku -> cartViewModel.decreaseQuantity(sku.id) },
-            onViewAllClick = { /* Handle view all click */ }
-        )
-        binding.rvHomePage.layoutManager = LinearLayoutManager(context)
-        binding.rvHomePage.adapter = homePageAdapter
+        // homePageAdapter = HomePageAdapter(
+        //     onBannerClick = { /* Handle banner click */ },
+        //     onCategoryClick = { /* Handle category click */ },
+        //     onProductClick = { /* Handle product click */ },
+        //     onAddToCartClick = { sku -> cartViewModel.addToCart(sku) },
+        //     onIncreaseClick = { sku -> cartViewModel.increaseQuantity(sku.id) },
+        //     onDecreaseClick = { sku -> cartViewModel.decreaseQuantity(sku.id) },
+        //     onViewAllClick = { /* Handle view all click */ }
+        // )
+        // binding.rvHomePage.layoutManager = LinearLayoutManager(context)
+        // binding.rvHomePage.adapter = homePageAdapter
     }
 
     private fun observeViewModel() {
-        viewModel.homePageItems.observe(viewLifecycleOwner) { items ->
-            homePageAdapter.submitList(items)
-        }
+        // viewModel.homePageItems.observe(viewLifecycleOwner) { items ->
+        //     homePageAdapter.submitList(items)
+        // }
     }
 
     override fun onDestroyView() {

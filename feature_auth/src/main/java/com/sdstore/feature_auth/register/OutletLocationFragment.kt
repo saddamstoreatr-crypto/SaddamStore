@@ -127,7 +127,7 @@ class OutletLocationFragment : Fragment() {
 
                     when (state) {
                         is RegisterViewModel.RegistrationState.Success -> {
-                            findNavController().navigate(R.id.action_outletLocationFragment_to_registerSuccessFragment)
+                            findNavController().navigate(com.sdstore.R.id.action_outletLocationFragment_to_registerSuccessFragment)
                             viewModel.resetRegistrationState()
                         }
                         is RegisterViewModel.RegistrationState.Error -> {

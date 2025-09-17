@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.sdstore.feature_products.R
 import com.sdstore.feature_products.databinding.BannerHtmlDialogBinding
+import com.sdstore.core.R as CoreR
 
 class BannerHtmlDialog : DialogFragment() {
 
@@ -20,7 +20,7 @@ class BannerHtmlDialog : DialogFragment() {
         arguments?.let {
             htmlContent = it.getString("htmlContent")
         }
-        setStyle(STYLE_NO_FRAME, R.style.Theme_SaddamStore)
+        setStyle(STYLE_NO_FRAME, CoreR.style.Theme_SaddamStore)
     }
 
     override fun onCreateView(

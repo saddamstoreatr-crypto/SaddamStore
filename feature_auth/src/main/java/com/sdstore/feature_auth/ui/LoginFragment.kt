@@ -60,7 +60,7 @@ class LoginFragment : Fragment() {
         }
 
         binding.tvGoToSignup.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
+            findNavController().navigate(com.sdstore.R.id.action_loginFragment_to_signUpFragment)
         }
     }
 
@@ -79,8 +79,7 @@ class LoginFragment : Fragment() {
                         is AuthViewModel.AuthState.Error -> {
                             Toast.makeText(context, state.message, Toast.LENGTH_LONG).show()
                         }
-                        is AuthViewModel.AuthState.Loading -> { /* Handled by isVisible binding */ }
-                        is AuthViewModel.AuthState.Idle -> { /* Do nothing */ }
+                        else -> { /* Loading and Idle states are handled by visibility binding */ }
                     }
                 }
             }

@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sdstore.cart.viewmodels.CartViewModel
 import com.sdstore.core.viewmodels.UiState
+import androidx.fragment.app.viewModels
 import com.sdstore.feature_products.databinding.FragmentAllPurchasedItemsBinding
 import com.sdstore.products.viewmodels.AllPurchasedItemsViewModel
 import dagger.hilt.android.AndroidEntryPoint

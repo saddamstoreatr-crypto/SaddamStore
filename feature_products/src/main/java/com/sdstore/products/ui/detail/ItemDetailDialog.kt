@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.sdstore.cart.viewmodels.CartViewModel
 import com.sdstore.core.models.Sku
-import com.sdstore.feature_products.R
+import androidx.fragment.app.viewModels
 import com.sdstore.feature_products.databinding.DialogItemDetailBinding
+import com.sdstore.core.R as CoreR
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,7 +27,7 @@ class ItemDetailDialog : DialogFragment() {
         arguments?.let {
             sku = it.getParcelable("sku", Sku::class.java)
         }
-        setStyle(STYLE_NO_FRAME, R.style.FullScreenDialog)
+        setStyle(STYLE_NO_FRAME, CoreR.style.FullScreenDialog)
     }
 
     override fun onCreateView(
@@ -48,7 +48,7 @@ class ItemDetailDialog : DialogFragment() {
             binding.productDescriptionTextView.text = it.description
             binding.productPriceTextView.text = "Rs. ${it.price}"
             binding.unitInfoTextView.text = it.unitInfo
-            binding.addToCartButton.setOnClickListener { _ ->
+            binding.addToCart.setOnClickListener { _ ->
                 cartViewModel.addToCart(it)
                 // You can show a toast or something here
             }

@@ -14,7 +14,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
-import com.sdstore.feature_auth.R
 import com.sdstore.feature_auth.databinding.FragmentEnterPhoneBinding
 import com.sdstore.feature_auth.help.FilerHelpBottomSheet
 import java.util.concurrent.TimeUnit
@@ -115,12 +114,10 @@ class EnterPhoneFragment : Fragment() {
         if(isLoading) {
             binding.progressBar.visibility = View.VISIBLE
             binding.tvConnectingStatus.visibility = View.VISIBLE
-            binding.submitButton.text = ""
             updateButtonState(false)
         } else {
             binding.progressBar.visibility = View.GONE
             binding.tvConnectingStatus.visibility = View.GONE
-            binding.submitButton.text = getString(R.string.next)
             updateButtonState(binding.phoneNumberEditText.text.length == 10)
         }
     }
