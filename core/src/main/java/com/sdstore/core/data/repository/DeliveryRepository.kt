@@ -4,8 +4,11 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.sdstore.core.data.Result
 import com.sdstore.core.models.Delivery
 import com.sdstore.core.models.Order
+import com.sdstore.core.models.Sku
 
 interface DeliveryRepository {
+
+    suspend fun getAllPurchasedSkus(): Result<List<Sku>>
 
     suspend fun getDeliveries(): Result<List<Delivery>>
 

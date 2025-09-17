@@ -27,6 +27,7 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -37,6 +38,8 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
+    // Yahan sirf feature modules list me rahenge
     dynamicFeatures.addAll(
         listOf(
             ":feature_auth",
@@ -48,12 +51,7 @@ android {
 }
 
 dependencies {
-    // Project Modules
     implementation(project(":core"))
-    implementation(project(":feature_auth"))
-    implementation(project(":feature_cart"))
-    implementation(project(":feature_orders"))
-    implementation(project(":feature_products"))
 
     // AndroidX & UI
     implementation(libs.androidx.core.ktx)
