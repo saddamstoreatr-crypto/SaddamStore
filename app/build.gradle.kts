@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.google.services)
-    alias(libs.plugins.navigation.safeargs) // ✅ SafeArgs sirf yahan
+    alias(libs.plugins.navigation.safeargs)
     alias(libs.plugins.firebase.appdistribution)
 }
 
@@ -24,10 +24,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 
@@ -42,6 +39,7 @@ android {
         viewBinding = true
     }
 
+    // Yahan sirf feature modules list me rahenge
     dynamicFeatures.addAll(
         listOf(
             ":feature_auth",
@@ -54,6 +52,10 @@ android {
 
 dependencies {
     implementation(project(":core"))
+    implementation(project(":feature_auth"))
+    implementation(project(":feature_products"))
+    implementation(project(":feature_cart"))
+    implementation(project(":feature_orders"))
 
     // AndroidX & UI
     implementation(libs.androidx.core.ktx)
@@ -64,7 +66,7 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.splashscreen)
 
-    // Hilt
+    // Hilt for DI
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 

@@ -16,13 +16,9 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -36,15 +32,12 @@ android {
 }
 
 dependencies {
-    implementation(project(":app"))
     implementation(project(":core"))
 
-    // Fragment + Navigation
+    // Fragment KTX
     implementation(libs.androidx.fragment.ktx)
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
 
-    // Hilt
+    // Hilt for DI
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 }
