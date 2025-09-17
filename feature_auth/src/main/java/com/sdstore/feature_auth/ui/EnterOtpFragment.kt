@@ -189,7 +189,7 @@ class EnterOtpFragment : Fragment() {
         val otp = "${binding.otp1.text}${binding.otp2.text}${binding.otp3.text}${binding.otp4.text}${binding.otp5.text}${binding.otp6.text}"
         if (otp.length == 6) {
             val credential = PhoneAuthProvider.getCredential(currentVerificationId, otp)
-            signInWithPhoneAuthCredential(.credential)
+            signInWithPhoneAuthCredential(credential)
         }
     }
 
