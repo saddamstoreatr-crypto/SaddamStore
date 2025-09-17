@@ -1,15 +1,13 @@
 package com.sdstore.core.customviews
 
-import android.R
 import android.content.Context
 import android.util.AttributeSet
-import android.widget.TextView
 import androidx.appcompat.widget.AppCompatTextView
 
 open class CustomTextView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = R.attr.textViewStyle
+    defStyleAttr: Int = android.R.attr.textViewStyle
 ) : AppCompatTextView(context, attrs, defStyleAttr) {
 
     private var originalText: CharSequence? = ""
