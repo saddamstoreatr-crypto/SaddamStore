@@ -33,7 +33,7 @@ android {
 
 dependencies {
 
-    implementation("com.github.bumptech.glide:glide:4.15.1")
+    implementation(libs.glide)
 
     implementation(project(":app"))
     implementation(project(":core"))

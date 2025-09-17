@@ -46,6 +46,12 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible"/>
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/groupCartContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="rv_cart_items,bottom_card" />
+
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"

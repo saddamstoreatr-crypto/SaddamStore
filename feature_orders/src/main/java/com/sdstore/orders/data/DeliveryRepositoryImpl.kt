@@ -5,6 +5,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.sdstore.core.data.Result
 import com.sdstore.core.data.repository.DeliveryRepository
+import com.sdstore.core.models.Delivery
 import com.sdstore.core.models.Order
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
@@ -44,5 +45,21 @@ class DeliveryRepositoryImpl @Inject constructor(
         } catch (e: Exception) {
             Result.Error(e)
         }
+    }
+
+    override suspend fun getDeliveries(): Result<List<Delivery>> {
+        throw UnsupportedOperationException("This operation is not supported for admin-facing repository.")
+    }
+
+    override suspend fun placeOrderFromCart(): Result<String> {
+        throw UnsupportedOperationException("This operation is not supported for admin-facing repository.")
+    }
+
+    override suspend fun cancelDelivery(deliveryId: String): Result<Unit> {
+        throw UnsupportedOperationException("This operation is not supported for admin-facing repository.")
+    }
+
+    override suspend fun getAllPurchasedSkus(): Result<List<com.sdstore.core.models.Sku>> {
+        throw UnsupportedOperationException("This operation is not supported for admin-facing repository.")
     }
 }

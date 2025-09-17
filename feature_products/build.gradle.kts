@@ -35,6 +35,7 @@ android {
 dependencies {
     implementation(project(":app"))
     implementation(project(":core"))
+    implementation(project(":feature_cart"))
 
     // Navigation and Fragment KTX
     implementation(libs.androidx.navigation.fragment.ktx)
@@ -48,4 +49,7 @@ dependencies {
     // ✅ YEH DEPENDENCIES KSP ERROR THEEK KARENGI
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.firestore)
+
+    // Glide
+    implementation(libs.glide)
 }

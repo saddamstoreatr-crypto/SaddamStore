@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.sdstore.core.R
 import com.sdstore.core.data.Result
 import com.sdstore.core.data.repository.DeliveryRepository // THEEK KIYA GAYA
+import com.sdstore.core.di.UserDeliveryRepository
 import com.sdstore.core.models.Sku
 import com.sdstore.core.viewmodels.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AllPurchasedItemsViewModel @Inject constructor(
-    private val deliveryRepository: DeliveryRepository, // THEEK KIYA GAYA
+    @UserDeliveryRepository private val deliveryRepository: DeliveryRepository, // THEEK KIYA GAYA
     private val application: Application
 ) : ViewModel() {
 
@@ -31,7 +32,7 @@ class AllPurchasedItemsViewModel @Inject constructor(
     fun fetchAllPurchasedItems() {
         _itemsState.value = UiState.Loading
         viewModelScope.launch {
-            when (val result = deliveryRepository.getAllPurchasedItems()) {
+            when (val result = deliveryRepository.getAllPurchasedSkus()) {
                 is Result.Success -> {
                     _itemsState.value = UiState.Success(result.data)
                 }

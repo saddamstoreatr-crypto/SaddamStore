@@ -36,9 +36,9 @@ class FullScreenBannerDialog : DialogFragment() {
         Glide.with(this)
             .load(imageUrl)
             .placeholder(R.drawable.ic_placeholder)
-            .into(binding.ivBanner)
+            .into(binding.fullScreenBannerImageView)
 
-        binding.btnClose.setOnClickListener {
+        binding.closeButton.setOnClickListener {
             dismiss()
         }
     }

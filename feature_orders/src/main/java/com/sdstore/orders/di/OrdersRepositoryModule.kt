@@ -1,21 +1,20 @@
 package com.sdstore.orders.di
 
-import com.google.firebase.firestore.FirebaseFirestore
 import com.sdstore.core.data.repository.DeliveryRepository
+import com.sdstore.core.di.AdminDeliveryRepository
 import com.sdstore.orders.data.DeliveryRepositoryImpl
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object OrdersModule {
+abstract class OrdersRepositoryModule {
 
-    @Provides
+    @Binds
     @Singleton
-    fun provideDeliveryRepository(firestore: FirebaseFirestore): DeliveryRepository {
-        return DeliveryRepositoryImpl(firestore)
-    }
+    @AdminDeliveryRepository
+    abstract fun bindDeliveryRepository(impl: DeliveryRepositoryImpl): DeliveryRepository
 }

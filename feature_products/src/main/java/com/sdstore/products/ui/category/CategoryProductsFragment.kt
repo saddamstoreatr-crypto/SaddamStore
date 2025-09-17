@@ -57,14 +57,14 @@ class CategoryProductsFragment : Fragment() {
                 cartViewModel.decreaseQuantity(sku.id)
             }
         )
-        binding.rvProducts.layoutManager = GridLayoutManager(context, 2)
-        binding.rvProducts.adapter = adapter
+        binding.rvCategoryProducts.layoutManager = GridLayoutManager(context, 2)
+        binding.rvCategoryProducts.adapter = adapter
     }
 
     private fun observeViewModel() {
         viewModel.products.observe(viewLifecycleOwner) { products ->
-            binding.tvNoProducts.isVisible = products.isNullOrEmpty()
-            binding.rvProducts.isVisible = !products.isNullOrEmpty()
+            binding.tvEmptyCategory.isVisible = products.isNullOrEmpty()
+            binding.rvCategoryProducts.isVisible = !products.isNullOrEmpty()
             adapter.submitList(products)
         }
     }

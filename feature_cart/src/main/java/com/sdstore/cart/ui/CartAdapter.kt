@@ -34,9 +34,9 @@ class CartAdapter(private val listener: CartItemListener) :
                     .into(ivProductImage)
 
                 // Fix: Tamam buttons ab binding object se theek access honge.
-                btnIncrease.setOnClickListener { listener.onIncreaseQuantity(item) }
-                btnDecrease.setOnClickListener { listener.onDecreaseQuantity(item) }
-                btnRemove.setOnClickListener { listener.onRemoveItem(item) }
+                binding.btnIncreaseQuantity.setOnClickListener { listener.onIncreaseQuantity(item) }
+                binding.btnDecreaseQuantity.setOnClickListener { listener.onDecreaseQuantity(item) }
+                binding.btnRemoveItem.setOnClickListener { listener.onRemoveItem(item) }
             }
         }
     }
