@@ -44,7 +44,7 @@ class DeliveryDetailFragment : Fragment() {
             if (isGranted) {
                 orderForInvoice?.let { downloadInvoice(it) }
             } else {
-                Toast.makeText(context, R.string.storage_permission_needed, Toast.LENGTH_LONG).show()
+                Toast.makeText(context, getString(R.string.storage_permission_needed), Toast.LENGTH_LONG).show()
             }
         }
 
@@ -90,7 +90,7 @@ class DeliveryDetailFragment : Fragment() {
                 orderForInvoice?.let { downloadInvoice(it) }
             }
             shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE) -> {
-                Toast.makeText(context, R.string.storage_permission_needed, Toast.LENGTH_LONG).show()
+                Toast.makeText(context, getString(R.string.storage_permission_needed), Toast.LENGTH_LONG).show()
                 requestPermissionLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             }
             else -> {
@@ -105,9 +105,9 @@ class DeliveryDetailFragment : Fragment() {
                 InvoiceGenerator.createInvoice(requireContext(), order)
             }
             if (success) {
-                Toast.makeText(context, R.string.invoice_download_success, Toast.LENGTH_LONG).show()
+                Toast.makeText(context, getString(R.string.invoice_download_success), Toast.LENGTH_LONG).show()
             } else {
-                Toast.makeText(context, R.string.invoice_download_failed, Toast.LENGTH_LONG).show()
+                Toast.makeText(context, getString(R.string.invoice_download_failed), Toast.LENGTH_LONG).show()
             }
         }
     }

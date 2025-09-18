@@ -9,13 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sdstore.core.models.Order
 import com.sdstore.core.models.OrderItem
+import com.sdstore.feature_cart.databinding.ItemCartBinding
 import com.sdstore.feature_orders.R
-import com.sdstore.feature_orders.databinding.ItemCartBinding
 import com.sdstore.feature_orders.databinding.ItemOrderDetailFooterBinding
 import com.sdstore.feature_orders.databinding.ItemOrderDetailHeaderBinding
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Locale
+import com.sdstore.core.R as coreR
 
 sealed class OrderDetailItem {
     data class Header(val order: Order) : OrderDetailItem()
@@ -32,7 +33,6 @@ class OrderDetailAdapter(
     private val onDownloadInvoiceClick: (Order) -> Unit
 ) : ListAdapter<OrderDetailItem, RecyclerView.ViewHolder>(OrderDetailDiffCallback()) {
 
-    // --- HEADER VIEW HOLDER ---
     inner class HeaderViewHolder(private val binding: ItemOrderDetailHeaderBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(order: Order) {
             val context = itemView.context
@@ -59,7 +59,6 @@ class OrderDetailAdapter(
         }
     }
 
-    // --- ITEM VIEW HOLDER ---
     inner class ItemViewHolder(private val binding: ItemCartBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: OrderItem) {
             binding.tvProductName.text = item.name
@@ -70,7 +69,7 @@ class OrderDetailAdapter(
 
             Glide.with(itemView.context)
                 .load(item.imageUrl)
-                .placeholder(com.sdstore.core.R.drawable.ic_placeholder) // Corrected placeholder
+                .placeholder(coreR.drawable.ic_placeholder)
                 .into(binding.ivProductImage)
 
             binding.quantitySelector.visibility = View.GONE
@@ -78,10 +77,8 @@ class OrderDetailAdapter(
         }
     }
 
-    // --- FOOTER VIEW HOLDER ---
     inner class FooterViewHolder(private val binding: ItemOrderDetailFooterBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(order: Order) {
-            // --- NAYI TABDEELI: Yahan check lagaya gaya hai ---
             if (order.status.equals("Pending", ignoreCase = true)) {
                 binding.btnCancelOrder.visibility = View.VISIBLE
                 binding.btnCancelOrder.setOnClickListener {
@@ -106,10 +103,11 @@ class OrderDetailAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
         return when (viewType) {
-            VIEW_TYPE_HEADER -> HeaderViewHolder(ItemOrderDetailHeaderBinding.inflate(LayoutInflater.from(parent.context), parent, false))
-            VIEW_TYPE_ITEM -> ItemViewHolder(ItemCartBinding.inflate(LayoutInflater.from(parent.context), parent, false))
-            VIEW_TYPE_FOOTER -> FooterViewHolder(ItemOrderDetailFooterBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+            VIEW_TYPE_HEADER -> HeaderViewHolder(ItemOrderDetailHeaderBinding.inflate(inflater, parent, false))
+            VIEW_TYPE_ITEM -> ItemViewHolder(ItemCartBinding.inflate(inflater, parent, false))
+            VIEW_TYPE_FOOTER -> FooterViewHolder(ItemOrderDetailFooterBinding.inflate(inflater, parent, false))
             else -> throw IllegalArgumentException("Invalid view type")
         }
     }
