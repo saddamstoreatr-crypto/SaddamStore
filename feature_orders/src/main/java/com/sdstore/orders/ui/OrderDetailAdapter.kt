@@ -10,7 +10,6 @@ import com.bumptech.glide.Glide
 import com.sdstore.core.models.Order
 import com.sdstore.core.models.OrderItem
 import com.sdstore.feature_cart.databinding.ItemCartBinding
-import com.sdstore.feature_orders.R
 import com.sdstore.feature_orders.databinding.ItemOrderDetailFooterBinding
 import com.sdstore.feature_orders.databinding.ItemOrderDetailHeaderBinding
 import java.text.NumberFormat
@@ -36,13 +35,13 @@ class OrderDetailAdapter(
     inner class HeaderViewHolder(private val binding: ItemOrderDetailHeaderBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(order: Order) {
             val context = itemView.context
-            binding.tvOrderId.text = context.getString(R.string.order_id_prefix, order.orderId)
+            binding.tvOrderId.text = context.getString(coreR.string.order_id_prefix, order.orderId)
 
             val date = order.createdAt
             val formattedDate = if (date != null) {
                 SimpleDateFormat("dd MMMM yyyy, hh:mm a", Locale.getDefault()).format(date)
             } else {
-                context.getString(R.string.order_date_unavailable)
+                context.getString(coreR.string.order_date_unavailable)
             }
             binding.tvOrderDate.text = formattedDate
             binding.tvOrderStatus.text = order.status
@@ -65,7 +64,7 @@ class OrderDetailAdapter(
             val format = NumberFormat.getCurrencyInstance(Locale("en", "PK"))
             val priceString = format.format(item.pricePaisas / 100.0)
             binding.tvProductPrice.text = priceString
-            binding.tvQuantity.text = itemView.context.getString(R.string.quantity_prefix, item.quantity)
+            binding.tvQuantity.text = itemView.context.getString(coreR.string.quantity_prefix, item.quantity)
 
             Glide.with(itemView.context)
                 .load(item.imageUrl)
