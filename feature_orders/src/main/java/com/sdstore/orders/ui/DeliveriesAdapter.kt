@@ -1,6 +1,5 @@
 package com.sdstore.orders.ui
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -11,9 +10,8 @@ import com.sdstore.core.models.Order
 import com.sdstore.feature_orders.databinding.ItemDeliveryBinding
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
-import java.util.Date
 import java.util.Locale
-import com.sdstore.core.R as coreR // Core module ke resources ke liye
+import com.sdstore.core.R as coreR
 
 class DeliveriesAdapter(private val onOrderClick: (Order) -> Unit) :
     ListAdapter<Order, DeliveriesAdapter.DeliveryViewHolder>(DeliveryDiffCallback()) {
@@ -43,7 +41,7 @@ class DeliveriesAdapter(private val onOrderClick: (Order) -> Unit) :
                     binding.ivStatusIcon.setColorFilter(ContextCompat.getColor(context, coreR.color.green))
                 }
                 else -> {
-                    binding.ivStatusIcon.setImageResource(com.sdstore.feature_orders.R.drawable.ic_scheduled)
+                    binding.ivStatusIcon.setImageResource(coreR.drawable.ic_scheduled)
                     binding.ivStatusIcon.clearColorFilter()
                 }
             }

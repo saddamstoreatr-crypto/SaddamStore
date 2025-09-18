@@ -15,7 +15,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.sdstore.core.models.User
 import com.sdstore.core.viewmodels.UiState
 import com.sdstore.core.viewmodels.UserViewModel
-import com.sdstore.feature_orders.R // Yeh import add karna zaroori hai
 import com.sdstore.feature_orders.databinding.FragmentAccountBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -80,26 +79,26 @@ class AccountFragment : Fragment() {
 
     private fun updateUi(user: User) {
         binding.name.text = user.name
-        binding.outletName.text = user.outletName.ifEmpty { getString(R.string.not_provided) }
+        binding.outletName.text = user.outletName.ifEmpty { getString(com.sdstore.feature_orders.R.string.not_provided) }
         binding.phoneNumber.text = user.phone
     }
 
     private fun showFeedbackDialog() {
         val builder = AlertDialog.Builder(requireContext())
         val inflater = requireActivity().layoutInflater
-        val dialogView = inflater.inflate(R.layout.dialog_feedback, null)
-        val feedbackEditText = dialogView.findViewById<EditText>(R.id.et_feedback)
+        val dialogView = inflater.inflate(com.sdstore.feature_orders.R.layout.dialog_feedback, null)
+        val feedbackEditText = dialogView.findViewById<EditText>(com.sdstore.feature_orders.R.id.et_feedback)
 
         builder.setView(dialogView)
-            .setTitle(getString(R.string.feedback_suggestion))
-            .setPositiveButton(getString(R.string.submit)) { dialog, _ ->
+            .setTitle(getString(com.sdstore.feature_orders.R.string.feedback_suggestion))
+            .setPositiveButton(getString(com.sdstore.feature_orders.R.string.submit)) { dialog, _ ->
                 val feedbackText = feedbackEditText.text.toString().trim()
                 if (feedbackText.isNotEmpty()) {
                     userViewModel.submitFeedback(feedbackText)
                 }
                 dialog.dismiss()
             }
-            .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
+            .setNegativeButton(getString(com.sdstore.feature_orders.R.string.cancel)) { dialog, _ ->
                 dialog.cancel()
             }
         builder.create().show()
@@ -108,27 +107,27 @@ class AccountFragment : Fragment() {
     private fun showEditProfileDialog(currentUser: User) {
         val builder = AlertDialog.Builder(requireContext())
         val inflater = requireActivity().layoutInflater
-        val dialogView = inflater.inflate(R.layout.dialog_edit_profile, null)
-        val nameEditText = dialogView.findViewById<EditText>(R.id.et_edit_name)
-        val outletNameEditText = dialogView.findViewById<EditText>(R.id.et_edit_outlet_name)
+        val dialogView = inflater.inflate(com.sdstore.feature_orders.R.layout.dialog_edit_profile, null)
+        val nameEditText = dialogView.findViewById<EditText>(com.sdstore.feature_orders.R.id.et_edit_name)
+        val outletNameEditText = dialogView.findViewById<EditText>(com.sdstore.feature_orders.R.id.et_edit_outlet_name)
 
         nameEditText.setText(currentUser.name)
         outletNameEditText.setText(currentUser.outletName)
 
         builder.setView(dialogView)
-            .setTitle(getString(R.string.edit_profile))
-            .setPositiveButton(getString(R.string.save)) { dialog, _ ->
+            .setTitle(getString(com.sdstore.feature_orders.R.string.edit_profile))
+            .setPositiveButton(getString(com.sdstore.feature_orders.R.string.save)) { dialog, _ ->
                 val newName = nameEditText.text.toString().trim()
                 val newOutletName = outletNameEditText.text.toString().trim()
 
                 if (newName.isNotEmpty()) {
                     userViewModel.updateUserProfile(newName, newOutletName)
                 } else {
-                    Toast.makeText(context, getString(R.string.name_cannot_be_empty), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, getString(com.sdstore.feature_orders.R.string.name_cannot_be_empty), Toast.LENGTH_SHORT).show()
                 }
                 dialog.dismiss()
             }
-            .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
+            .setNegativeButton(getString(com.sdstore.feature_orders.R.string.cancel)) { dialog, _ ->
                 dialog.cancel()
             }
 
