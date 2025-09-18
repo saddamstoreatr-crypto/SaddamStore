@@ -35,16 +35,16 @@ class DeliveriesAdapter(private val onOrderClick: (Order) -> Unit) :
 
             when (order.status.lowercase(Locale.getDefault())) {
                 "cancelled" -> {
-                    binding.deliveryStatusIcon.setImageResource(coreR.drawable.ic_cancel)
-                    binding.deliveryStatusIcon.setColorFilter(ContextCompat.getColor(context, coreR.color.red))
+                    binding.ivStatusIcon.setImageResource(coreR.drawable.ic_cancel)
+                    binding.ivStatusIcon.setColorFilter(ContextCompat.getColor(context, coreR.color.red))
                 }
                 "delivered" -> {
-                    binding.deliveryStatusIcon.setImageResource(coreR.drawable.ic_check_circle)
-                    binding.deliveryStatusIcon.setColorFilter(ContextCompat.getColor(context, coreR.color.green))
+                    binding.ivStatusIcon.setImageResource(coreR.drawable.ic_check_circle)
+                    binding.ivStatusIcon.setColorFilter(ContextCompat.getColor(context, coreR.color.green))
                 }
                 else -> {
-                    binding.deliveryStatusIcon.setImageResource(com.sdstore.feature_orders.R.drawable.ic_scheduled)
-                    binding.deliveryStatusIcon.clearColorFilter()
+                    binding.ivStatusIcon.setImageResource(com.sdstore.feature_orders.R.drawable.ic_scheduled)
+                    binding.ivStatusIcon.clearColorFilter()
                 }
             }
 
@@ -57,7 +57,7 @@ class DeliveriesAdapter(private val onOrderClick: (Order) -> Unit) :
             binding.tvDeliveryDate.text = formattedDate
 
             val format = NumberFormat.getCurrencyInstance(Locale("en", "PK"))
-            binding.tvDeliveryTotal.text = format.format(order.totalPrice / 100.0)
+            binding.tvDeliveryAmount.text = format.format(order.totalPrice / 100.0)
         }
     }
 }

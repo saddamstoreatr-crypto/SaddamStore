@@ -14,46 +14,45 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
+        <ImageView
+            android:id="@+id/iv_status_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:src="@drawable/ic_scheduled"/>
+
+        <TextView
+            android:id="@+id/tv_delivery_id"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/iv_status_icon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_delivery_amount"
+            tools:text="Order ID: #123456" />
+
         <TextView
             android:id="@+id/tv_delivery_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="ڈیلیوری: منگل، 19 اگست" />
+            android:layout_marginTop="2dp"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/tv_delivery_id"
+            app:layout_constraintTop_toBottomOf="@id/tv_delivery_id"
+            tools:text="19 August 2024" />
 
         <TextView
             android:id="@+id/tv_delivery_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="2dp"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/tv_delivery_id"
             app:layout_constraintTop_toBottomOf="@id/tv_delivery_date"
-            tools:text="شیڈیول شدہ" />
-
-        <TextView
-            android:id="@+id/tv_cancellation_reason"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textColor="@color/status_red"
-            android:textSize="@dimen/font_size_small"
-            android:visibility="gone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tv_delivery_amount"
-            app:layout_constraintTop_toBottomOf="@id/tv_delivery_status"
-            tools:text="وجہ: اسٹاک میں دستیاب نہیں ہے۔"
-            tools:visibility="visible" />
-
-        <ImageView
-            android:id="@+id/iv_status_icon"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            app:layout_constraintEnd_toStartOf="@id/tv_delivery_status"
-            app:layout_constraintTop_toTopOf="@id/tv_delivery_status"
-            app:layout_constraintBottom_toBottomOf="@id/tv_delivery_status"
-            android:layout_marginEnd="4dp"/>
+            tools:text="Scheduled" />
 
         <TextView
             android:id="@+id/tv_delivery_amount"

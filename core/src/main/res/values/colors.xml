@@ -100,5 +100,7 @@
     <color name="purple700">#7B1FA2</color>
     <color name="purple800">#6A1B9A</color>
     <color name="purple900">#4A148C</color>
+    <color name="red">#FF0000</color>
+    <color name="green">#4CAF50</color>
 
 </resources>

@@ -188,4 +188,7 @@
     <!-- ✅ Added missing strings for layouts -->
     <string name="full_screen_banner">Full Screen Banner</string>
     <string name="category_image">Category Image</string>
+    <string name="date_not_available">Date not available</string>
+
+
 </resources>
