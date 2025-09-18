@@ -53,7 +53,6 @@ android {
 
 dependencies {
     implementation(project(":core"))
-    implementation(project(":feature_auth"))
 
     // AndroidX & UI
     implementation(libs.androidx.core.ktx)
