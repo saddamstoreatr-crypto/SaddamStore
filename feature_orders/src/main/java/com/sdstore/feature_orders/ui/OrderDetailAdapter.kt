@@ -71,7 +71,7 @@ class OrderDetailAdapter(
                 .placeholder(coreR.drawable.ic_placeholder)
                 .into(binding.ivProductImage)
 
-            binding.quantitySelector.visibility = View.GONE
+            binding.quantityControls.visibility = View.GONE
             binding.btnRemoveItem.visibility = View.GONE
         }
     }
