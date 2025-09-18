@@ -4,12 +4,12 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.firestore.DocumentSnapshot
+import com.sdstore.R
 import com.sdstore.core.data.Result
 import com.sdstore.core.data.repository.DeliveryRepository
 import com.sdstore.core.di.AdminDeliveryRepository
 import com.sdstore.core.models.Order
 import com.sdstore.core.viewmodels.UiState
-import com.sdstore.feature_orders.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

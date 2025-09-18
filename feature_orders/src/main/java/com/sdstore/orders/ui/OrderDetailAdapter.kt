@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sdstore.core.models.Order
 import com.sdstore.core.models.OrderItem
-import com.sdstore.feature_orders.R
-import com.sdstore.feature_orders.databinding.ItemCartBinding
+import com.sdstore.feature_cart.databinding.ItemCartBinding
 import com.sdstore.feature_orders.databinding.ItemOrderDetailFooterBinding
 import com.sdstore.feature_orders.databinding.ItemOrderDetailHeaderBinding
 import java.text.NumberFormat
