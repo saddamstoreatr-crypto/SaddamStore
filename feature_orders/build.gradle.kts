@@ -41,11 +41,12 @@ android {
 dependencies {
     implementation(project(":core")) // User models, ViewModels, shared logic
     implementation(project(":app"))
-    implementation(project(":feature_cart"))
+    implementation(project(":feature_cart")) // <-- Add this line
 
     // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+    ksp(libs.androidx.databinding.compiler)
 
     // AndroidX
     implementation("androidx.appcompat:appcompat:1.6.1")
