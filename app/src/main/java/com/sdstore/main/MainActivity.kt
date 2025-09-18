@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         if (auth.currentUser == null) {
-            val intent = Intent().setClassName(this, "com.sdstore.auth.AuthActivity")
+            val intent = Intent().setClassName(this, "com.sdstore.feature_auth.AuthActivity")
             startActivity(intent)
             finish()
             return

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.SaddamStore.Auth" parent="Theme.SaddamStore">
+    </style>
+
+    <style name="Theme.SaddamStore.Register" parent="Theme.SaddamStore">
+    </style>
+</resources>

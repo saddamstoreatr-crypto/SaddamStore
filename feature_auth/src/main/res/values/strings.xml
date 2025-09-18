@@ -1,24 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="location_service_off_title">Location Service Disabled</string>
-    <string name="location_service_off_message">To register your outlet location, please enable location services in your device settings.</string>
-    <string name="turn_on">Turn On</string>
-    <string name="connecting">Connecting…</string>
-    <string name="helpline_text">Having trouble? Call our helpline</string>
-    <string name="please_enter_phone_number">Please enter phone number</string>
-    <string name="location_permission_needed">Location permission needed</string>
-    <string name="get_location_first">Get location first</string>
-    <string name="cancel">Cancel</string>
-    <string name="register_location">Register location</string>
-    <string name="location_fetching">Fetching location…</string>
-    <string name="location_saved">Location saved</string>
-    <string name="registration_successful">Registration successful!</string>
-    <string name="outlet_has_been_registered">Outlet has been registered.</string>
-    <string name="please_enter_name">Please enter name</string>
-    <string name="enter_otp_instruction">Enter the OTP sent to your phone</string>
-    <string name="login_successful">Login successful</string>
-    <string name="otp_send_fail">Failed to send OTP</string>
-    <string name="new_code_sent">New code sent</string>
-    <string name="resend_code_in">Resend code in %1$s</string>
+    <string name="title_feature_auth">Authentication</string>
+    <string name="connecting">Connecting...</string>
+    <string name="helpline_text">For help, call our helpline: 0304-111-SDST (7378)</string>
+
+    <string name="outlet_has_been_registered">Your outlet has been successfully registered!</string>
+    <string name="enter_otp_instruction">Enter the 6-digit code sent to your number</string>
+    <string name="login_successful">Login Successful</string>
+    <string name="otp_send_fail">Failed to send OTP. Please try again.</string>
+    <string name="new_code_sent">A new code has been sent.</string>
+    <string name="resend_code_in">Resend code in %d s</string>
+
+    <string name="phone_number">Phone Number</string>
+    <string name="send_otp">Send OTP</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="verify_otp">Verify OTP</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="login">Login</string>
+    <string name="signup">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
     <string name="fill_all_fields">Please fill all fields</string>
     <string name="account_created_verify_email">Account created. Please verify your email.</string>
+    <string name="verification_email_sent">Verification email sent.</string>
+    <string name="email_not_verified">Email not verified. Please check your inbox.</string>
+    <string name="user_name">User Name</string>
+    <string name="outlet_name">Outlet Name</string>
+    <string name="please_enter_name">Please enter your name</string>
+    <string name="please_enter_outlet_name">Please enter your outlet name</string>
+    <string name="please_enter_phone_number">Please enter a valid 11-digit phone number starting with 03</string>
+    <string name="get_location">Get Location</string>
+    <string name="register_location">Register</string>
+    <string name="location_permission_needed">Location permission is required to register.</string>
+    <string name="location_service_off_title">Location Service Disabled</string>
+    <string name="location_service_off_message">Please enable location services to continue.</string>
+    <string name="turn_on">Turn On</string>
+    <string name="cancel">Cancel</string>
+    <string name="location_fetching">Fetching location...</string>
+    <string name="location_saved">Location Saved</string>
+    <string name="get_location_first">Please get your location first.</string>
+    <string name="registration_successful">Registration Successful!</string>
 </resources>
