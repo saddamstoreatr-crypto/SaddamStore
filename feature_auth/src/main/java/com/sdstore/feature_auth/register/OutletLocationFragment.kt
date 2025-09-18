@@ -21,7 +21,12 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.google.android.gms.location.*
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.Priority
 import com.sdstore.feature_auth.R
 import com.sdstore.feature_auth.databinding.FragmentOutletLocationBinding
 import com.sdstore.feature_auth.viewmodels.RegisterViewModel
@@ -127,7 +132,7 @@ class OutletLocationFragment : Fragment() {
 
                     when (state) {
                         is RegisterViewModel.RegistrationState.Success -> {
-                            findNavController().navigate(com.sdstore.R.id.action_outletLocationFragment_to_registerSuccessFragment)
+                            findNavController().navigate(com.sdstore.feature_auth.R.id.action_outletLocationFragment_to_registerSuccessFragment)
                             viewModel.resetRegistrationState()
                         }
                         is RegisterViewModel.RegistrationState.Error -> {

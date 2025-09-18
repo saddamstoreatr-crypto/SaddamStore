@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sdstore.core.models.Order
 import com.sdstore.core.models.OrderItem
-import com.sdstore.feature_cart.databinding.ItemCartBinding
+import com.sdstore.feature_orders.R
+import com.sdstore.feature_orders.databinding.ItemCartBinding
 import com.sdstore.feature_orders.databinding.ItemOrderDetailFooterBinding
 import com.sdstore.feature_orders.databinding.ItemOrderDetailHeaderBinding
 import java.text.NumberFormat
@@ -29,7 +30,7 @@ private const val VIEW_TYPE_FOOTER = 2
 class OrderDetailAdapter(
     private val onCancelClick: (String) -> Unit,
     private val onDownloadInvoiceClick: (Order) -> Unit
-) : androidx.recyclerview.widget.ListAdapter<OrderDetailItem, RecyclerView.ViewHolder>(OrderDetailDiffCallback()) {
+) : ListAdapter<OrderDetailItem, RecyclerView.ViewHolder>(OrderDetailDiffCallback()) {
 
     // --- HEADER VIEW HOLDER ---
     inner class HeaderViewHolder(private val binding: ItemOrderDetailHeaderBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -69,7 +70,7 @@ class OrderDetailAdapter(
 
             Glide.with(itemView.context)
                 .load(item.imageUrl)
-                .placeholder(R.drawable.ic_placeholder)
+                .placeholder(com.sdstore.core.R.drawable.ic_placeholder) // Corrected placeholder
                 .into(binding.ivProductImage)
 
             binding.quantitySelector.visibility = View.GONE

@@ -13,11 +13,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.sdstore.core.data.Result
+import com.sdstore.core.viewmodels.UserViewModel
 import com.sdstore.feature_auth.R
 import com.sdstore.feature_auth.databinding.FragmentLoginBinding
 import com.sdstore.feature_auth.viewmodels.AuthViewModel
-import com.sdstore.core.data.Result
-import com.sdstore.core.viewmodels.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -60,7 +60,7 @@ class LoginFragment : Fragment() {
         }
 
         binding.tvGoToSignup.setOnClickListener {
-            findNavController().navigate(com.sdstore.R.id.action_loginFragment_to_signUpFragment)
+            findNavController().navigate(com.sdstore.feature_auth.R.id.action_loginFragment_to_signUpFragment)
         }
     }
 

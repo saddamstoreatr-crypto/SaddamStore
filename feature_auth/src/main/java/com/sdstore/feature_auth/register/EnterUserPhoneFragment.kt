@@ -37,7 +37,7 @@ class EnterUserPhoneFragment : Fragment() {
         val currentUser = Firebase.auth.currentUser
         if (!currentUser?.phoneNumber.isNullOrEmpty()) {
             viewModel.saveUserPhone(currentUser!!.phoneNumber!!)
-            findNavController().navigate(com.sdstore.R.id.action_enterUserPhoneFragment_to_outletLocationFragment)
+            findNavController().navigate(com.sdstore.feature_auth.R.id.action_enterUserPhoneFragment_to_outletLocationFragment)
             return
         }
 
@@ -49,7 +49,7 @@ class EnterUserPhoneFragment : Fragment() {
             val phoneNumber = binding.phoneEditText.text.toString().trim()
             if (phoneNumber.length == 11 && phoneNumber.startsWith("03")) {
                 viewModel.saveUserPhone(phoneNumber)
-                findNavController().navigate(com.sdstore.R.id.action_enterUserPhoneFragment_to_outletLocationFragment)
+                findNavController().navigate(com.sdstore.feature_auth.R.id.action_enterUserPhoneFragment_to_outletLocationFragment)
             } else {
                 Toast.makeText(context, getString(R.string.please_enter_phone_number), Toast.LENGTH_SHORT).show()
             }

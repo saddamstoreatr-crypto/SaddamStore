@@ -1,6 +1,5 @@
 package com.sdstore.orders.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +15,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.sdstore.core.models.User
 import com.sdstore.core.viewmodels.UiState
 import com.sdstore.core.viewmodels.UserViewModel
-import com.sdstore.feature_orders.R
+import com.sdstore.feature_orders.R // Yeh import add karna zaroori hai
 import com.sdstore.feature_orders.databinding.FragmentAccountBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

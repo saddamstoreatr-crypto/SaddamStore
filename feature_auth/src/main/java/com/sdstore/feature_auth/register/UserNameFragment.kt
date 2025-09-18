@@ -29,7 +29,7 @@ class UserNameFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (viewModel.userName?.isNotEmpty() == true) {
-            findNavController().navigate(com.sdstore.R.id.action_userNameFragment_to_outletNameFragment)
+            findNavController().navigate(com.sdstore.feature_auth.R.id.action_userNameFragment_to_outletNameFragment)
             return
         }
 
@@ -37,7 +37,7 @@ class UserNameFragment : Fragment() {
             val name = binding.nameEditText.text.toString().trim()
             if (name.isNotEmpty()) {
                 viewModel.saveUserName(name)
-                findNavController().navigate(com.sdstore.R.id.action_userNameFragment_to_outletNameFragment)
+                findNavController().navigate(com.sdstore.feature_auth.R.id.action_userNameFragment_to_outletNameFragment)
             } else {
                 Toast.makeText(context, getString(R.string.please_enter_name), Toast.LENGTH_SHORT).show()
             }
