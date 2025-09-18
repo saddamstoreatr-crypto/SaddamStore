@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/orders_nav_graph"
+    app:startDestination="@id/deliveriesFragment">
+
+    <fragment
+        android:id="@+id/deliveriesFragment"
+        android:name="com.sdstore.orders.ui.DeliveriesFragment"
+        android:label="fragment_deliveries"
+        tools:layout="@layout/fragment_deliveries" />
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.sdstore.orders.ui.AccountFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/deliveryDetailFragment"
+        android:name="com.sdstore.orders.ui.DeliveryDetailFragment"
+        android:label="fragment_delivery_detail"
+        tools:layout="@layout/fragment_delivery_detail" />
+</navigation>

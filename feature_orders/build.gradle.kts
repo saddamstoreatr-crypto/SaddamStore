@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.sdstore.feature_orders"
+    namespace = "com.sdstore.orders"
     compileSdk = 34
 
     defaultConfig {
