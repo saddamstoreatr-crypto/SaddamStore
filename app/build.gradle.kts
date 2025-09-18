@@ -43,7 +43,6 @@ android {
     // Yahan sirf feature modules list me rahenge
     dynamicFeatures.addAll(
         listOf(
-            ":feature_auth",
             ":feature_products",
             ":feature_cart",
             ":feature_orders"
@@ -53,6 +52,7 @@ android {
 
 dependencies {
     implementation(project(":core"))
+    implementation(project(":feature_auth"))
 
     // AndroidX & UI
     implementation(libs.androidx.core.ktx)
