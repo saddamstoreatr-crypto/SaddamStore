@@ -1,4 +1,4 @@
-package com.sdstore.orders.ui
+package com.sdstore.feature_orders.ui
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -20,7 +20,7 @@ import com.sdstore.core.models.Order
 import com.sdstore.core.utils.InvoiceGenerator
 import com.sdstore.core.viewmodels.UiState
 import com.sdstore.feature_orders.databinding.FragmentDeliveryDetailBinding
-import com.sdstore.orders.viewmodels.DeliveryViewModel
+import com.sdstore.feature_orders.viewmodels.DeliveryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

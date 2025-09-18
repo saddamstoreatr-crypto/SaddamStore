@@ -1,4 +1,4 @@
-package com.sdstore.orders.ui
+package com.sdstore.feature_orders.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sdstore.core.viewmodels.UiState
 import com.sdstore.feature_orders.databinding.FragmentDeliveriesBinding
-import com.sdstore.orders.viewmodels.DeliveryViewModel
+import com.sdstore.feature_orders.viewmodels.DeliveryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

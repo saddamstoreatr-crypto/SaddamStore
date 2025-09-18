@@ -1,4 +1,4 @@
-package com.sdstore.orders.ui
+package com.sdstore.feature_orders.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.sdstore.feature_orders.databinding.BottomSheetDeliveryCancelConfirmationBinding
-import com.sdstore.orders.viewmodels.DeliveryViewModel
+import com.sdstore.feature_orders.viewmodels.DeliveryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

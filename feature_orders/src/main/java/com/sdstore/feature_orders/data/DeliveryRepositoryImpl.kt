@@ -1,4 +1,4 @@
-package com.sdstore.orders.data
+package com.sdstore.feature_orders.data
 
 import com.google.firebase.firestore.DocumentSnapshot
 import com.sdstore.core.data.Result

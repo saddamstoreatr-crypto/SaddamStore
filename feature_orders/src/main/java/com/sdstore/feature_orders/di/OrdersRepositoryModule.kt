@@ -1,8 +1,8 @@
-package com.sdstore.orders.di
+package com.sdstore.feature_orders.di
 
 import com.sdstore.core.data.repository.DeliveryRepository
 import com.sdstore.core.di.AdminDeliveryRepository
-import com.sdstore.orders.data.DeliveryRepositoryImpl
+import com.sdstore.feature_orders.data.DeliveryRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

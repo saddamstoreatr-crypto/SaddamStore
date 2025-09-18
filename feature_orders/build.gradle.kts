@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.sdstore.orders"
+    namespace = "com.sdstore.feature_orders"
     compileSdk = 34
 
     defaultConfig {
@@ -40,6 +40,7 @@ android {
 
 dependencies {
     implementation(project(":core")) // User models, ViewModels, shared logic
+    implementation(project(":app"))
 
     // Hilt
     implementation(libs.hilt.android)

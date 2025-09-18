@@ -1,4 +1,4 @@
-package com.sdstore.orders.ui
+package com.sdstore.feature_orders.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater

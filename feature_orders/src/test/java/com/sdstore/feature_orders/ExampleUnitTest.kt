@@ -1,4 +1,4 @@
-package com.sdstore.orders
+package com.sdstore.feature_orders
 
 import org.junit.Test
 

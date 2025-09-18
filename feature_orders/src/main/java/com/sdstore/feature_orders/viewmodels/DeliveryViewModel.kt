@@ -1,4 +1,4 @@
-package com.sdstore.orders.viewmodels
+package com.sdstore.feature_orders.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
