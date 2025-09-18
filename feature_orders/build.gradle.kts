@@ -41,4 +41,5 @@ dependencies {
     // Hilt for DI
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+    kapt(libs.androidx.databinding.compiler)
 }
