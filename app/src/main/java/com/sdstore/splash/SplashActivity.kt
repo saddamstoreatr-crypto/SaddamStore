@@ -20,8 +20,7 @@ class SplashActivity : AppCompatActivity() {
         if (auth.currentUser != null) {
             startActivity(Intent(this, MainActivity::class.java))
         } else {
-            // Use implicit intent to start AuthActivity
-            val intent = Intent().setClassName(this, "com.sdstore.auth.AuthActivity")
+            val intent = Intent().setClassName(this, "com.sdstore.feature_auth.AuthActivity")
             startActivity(intent)
         }
         finish()
