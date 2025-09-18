@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.ksp)
-    id("kotlin-kapt")
 }
 
 android {
@@ -38,8 +37,11 @@ dependencies {
     implementation(project(":app"))
     implementation(project(":feature_cart"))
 
+    // Data Binding
+
+    ksp(libs.androidx.databinding.compiler)
+
     // Hilt for DI
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
-    kapt(libs.androidx.databinding.compiler)
 }
