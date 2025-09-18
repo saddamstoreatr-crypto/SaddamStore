@@ -33,22 +33,19 @@ android {
     }
 
     buildFeatures {
-        dataBinding = true      // ✅ AGP خود DataBinding compiler inject کرے گا
+        dataBinding = true      // ✅ AGP automatically compiler inject karega
         viewBinding = true
     }
 }
 
 dependencies {
-    implementation(project(":core"))
+    implementation(project(":core")) // User models, ViewModels, shared logic
 
-    // Hilt for DI
+    // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 
-    // Core AndroidX
+    // AndroidX
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-
-    // Optional DataBinding runtime (AGP usually injects it automatically)
-    implementation("androidx.databinding:databinding-runtime:8.2.0")
 }

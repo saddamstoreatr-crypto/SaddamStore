@@ -35,6 +35,7 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":app"))
 
+
     // Hilt for DI
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
