@@ -27,7 +27,7 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
-        dataBinding = true  // <-- This was missing
+        dataBinding = true
         viewBinding = true
     }
 }
@@ -40,5 +40,5 @@ dependencies {
     // Hilt for DI
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
-    ksp(libs.androidx.databinding.compiler) // <-- This was missing
+    ksp(libs.androidx.databinding.compiler)
 }
