@@ -41,6 +41,7 @@ android {
 dependencies {
     implementation(project(":core")) // User models, ViewModels, shared logic
     implementation(project(":app"))
+    implementation(project(":feature_cart"))
 
     // Hilt
     implementation(libs.hilt.android)
