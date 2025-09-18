@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.ksp)
-    kotlin("kapt") // Hilt کے لیے
 }
 
 android {
@@ -41,13 +40,10 @@ android {
 
 dependencies {
     implementation(project(":core"))
-    implementation(project(":app"))
-    implementation(project(":feature_cart"))
 
     // Hilt for DI
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
-    kapt(libs.hilt.compiler)
 
     // Core AndroidX
     implementation("androidx.appcompat:appcompat:1.6.1")
