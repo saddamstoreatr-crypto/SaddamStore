@@ -44,6 +44,7 @@ android {
     dynamicFeatures.addAll(
         listOf(
             ":feature_products",
+            ":feature_auth",
             ":feature_cart",
             ":feature_orders"
         )
