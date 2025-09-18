@@ -61,6 +61,9 @@ class DeliveryViewModel @Inject constructor(
                 is Result.Error -> {
                     _ordersState.value = UiState.Error(getApplication<Application>().getString(R.string.orders_loading_error))
                 }
+                Result.Loading -> {
+                    // Already handled by setting state to Loading before the call
+                }
             }
             isFetchingOrders = false
         }
@@ -88,6 +91,9 @@ class DeliveryViewModel @Inject constructor(
                 }
                 is Result.Error -> {
                     _orderUpdateState.value = UiState.Error(getApplication<Application>().getString(R.string.order_cancellation_failed))
+                }
+                Result.Loading -> {
+                    // Already handled by setting state to Loading before the call
                 }
             }
         }

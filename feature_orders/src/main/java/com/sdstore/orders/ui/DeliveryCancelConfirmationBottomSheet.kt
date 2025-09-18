@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.sdstore.orders.databinding.BottomSheetDeliveryCancelConfirmationBinding
+import com.sdstore.feature_orders.databinding.BottomSheetDeliveryCancelConfirmationBinding
 import com.sdstore.orders.viewmodels.DeliveryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
